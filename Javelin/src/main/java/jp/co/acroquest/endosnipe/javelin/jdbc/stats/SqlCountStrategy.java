@@ -25,6 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.jdbc.stats;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
@@ -36,7 +37,6 @@ import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
 import jp.co.acroquest.endosnipe.javelin.event.SqlCountOverEvent;
 import jp.co.acroquest.endosnipe.javelin.jdbc.common.JdbcJavelinConfig;
 import jp.co.acroquest.endosnipe.javelin.log.JavelinLogCallback;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
 
 /**

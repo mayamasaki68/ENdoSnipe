@@ -63,7 +63,7 @@
         <copy file="${endosnipe-communicator.jar}"    todir="${lib-dependency.dir}" failonerror="yes" />
 
         <!-- ${src}から${classes}に、Javaコードをコンパイルする -->
-        <javac srcdir="${src}" destdir="${classes}" debug="on">
+        <javac srcdir="${src}" destdir="${classes}" debug="on" encoding="MS932">
             <classpath>
                 <path refid="classpath" />
             </classpath>
@@ -78,7 +78,7 @@
     <!-- テスト用共通ライブラリのコンパイル -->
     <target name="compile-test" depends="compile" description="テスト用共通ライブラリをコンパイルする">
         <!-- ${src.test}から${classes.test}に、Javaコードをコンパイルする -->
-        <javac srcdir="${src.test}" destdir="${classes.test}" debug="on">
+        <javac srcdir="${src.test}" destdir="${classes.test}" debug="on" encoding="MS932">
             <classpath>
                 <path refid="classpath-test" />
             </classpath>

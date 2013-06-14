@@ -58,29 +58,27 @@ import jp.co.acroquest.endosnipe.data.db.ConnectionManager;
  */
 public class Bootstrap implements LogMessageCodes
 {
-    private static Bootstrap            main__                 = null;
+    private static Bootstrap main__ = null;
 
     /** ロガー */
-    public static final ENdoSnipeLogger LOGGER                =
-            ENdoSnipeLogger.getLogger(Bootstrap.class,
-                                      ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+    public static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(Bootstrap.class);
 
     // 設定ファイルを指定するためのプロパティ名
-    private static final String         COLLECTOR_PROP_NAME    = "collector.property";
+    private static final String COLLECTOR_PROP_NAME = "collector.property";
 
     // デフォルトの設定ファイル
-    private static final String         DEF_COLLECTOR_PROPERTY = "../conf/collector.properties";
+    private static final String DEF_COLLECTOR_PROPERTY = "../conf/collector.properties";
 
     // 異常終了時のステータス
-    private static final int            STATUS_ERROR           = 1;
+    private static final int STATUS_ERROR = 1;
 
     // 開始処理中を表すフラグ
-    private volatile boolean            starting_;
+    private volatile boolean starting_;
 
     // 終了処理中を表すフラグ
-    private volatile boolean            stopping_;
+    private volatile boolean stopping_;
 
-    private ENdoSnipeDataCollector      collector_;
+    private ENdoSnipeDataCollector collector_;
 
     /**
      * エントリポイントメソッドです。<br />
@@ -291,7 +289,7 @@ public class Bootstrap implements LogMessageCodes
     private static void printUsage()
     {
         System.err.println("Usage: java -D" + COLLECTOR_PROP_NAME
-                           + "=PROPFILENAME -jar endosnipe-datacollector.jar {start|stop}");
+                + "=PROPFILENAME -jar endosnipe-datacollector.jar {start|stop}");
     }
 
     /**

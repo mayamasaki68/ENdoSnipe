@@ -72,13 +72,9 @@ public class SignalUtil
         String icon = "";
         if (level == SignalConstants.STATE_LEVEL_3)
         {
-            if (signalValue == 0)
+            if (0 <= signalValue && signalValue < SignalConstants.STATE_LEVEL_3)
             {
-                icon = SignalConstants.SIGNA_ICON_PREFIX + signalValue;
-            }
-            else if (0 < signalValue && signalValue <= SignalConstants.STATE_LEVEL_3)
-            {
-                icon = SignalConstants.SIGNA_ICON_PREFIX + (2 * signalValue - 1);
+                icon = SignalConstants.SIGNA_ICON_PREFIX + 2 * signalValue;
             }
             else
             {
@@ -87,11 +83,7 @@ public class SignalUtil
         }
         else if (level == SignalConstants.STATE_LEVEL_5)
         {
-            if (signalValue == 0)
-            {
-                icon = SignalConstants.SIGNA_ICON_PREFIX + signalValue;
-            }
-            else if (0 < signalValue && signalValue <= SignalConstants.STATE_LEVEL_5)
+            if (0 <= signalValue && signalValue < SignalConstants.STATE_LEVEL_5)
             {
                 icon = SignalConstants.SIGNA_ICON_PREFIX + signalValue;
             }

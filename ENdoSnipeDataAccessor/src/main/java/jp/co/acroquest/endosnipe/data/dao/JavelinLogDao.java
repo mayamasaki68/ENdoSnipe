@@ -41,7 +41,6 @@ import java.util.List;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.util.SQLUtil;
 import jp.co.acroquest.endosnipe.common.util.StreamUtil;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 import jp.co.acroquest.endosnipe.data.TableNames;
 import jp.co.acroquest.endosnipe.data.db.DBManager;
@@ -57,8 +56,7 @@ import jp.co.acroquest.endosnipe.util.ResourceDataDaoUtil;
 public class JavelinLogDao extends AbstractDao implements LogMessageCodes, TableNames
 {
     private static final ENdoSnipeLogger LOGGER                  =
-                                                                        ENdoSnipeLogger.getLogger(JavelinLogDao.class,
-                                                                                                  ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+                                                                        ENdoSnipeLogger.getLogger(JavelinLogDao.class);
 
     /** ZIP 圧縮用ストリームのバッファサイズ */
     private static final int             BUF_SIZE                  = 8192;

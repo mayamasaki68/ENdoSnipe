@@ -40,7 +40,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeCommonPluginProvider;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.parser.JavelinConstants;
 import jp.co.acroquest.endosnipe.common.parser.JavelinLogAccessor;
@@ -57,14 +56,12 @@ import jp.co.acroquest.endosnipe.javelin.JavelinLogUtil;
  */
 public class JavelinParser
 {
-    private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            JavelinParser.class, ENdoSnipeCommonPluginProvider.INSTANCE);
+    private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(JavelinParser.class);
 
     /** 詳細タグの接頭辞 */
     public static final String DETAIL_TAG_PREFIX = "<<javelin.";
 
-    private static final int DETAIL_START_TAG_LENGTH = DETAIL_TAG_PREFIX
-            .length();
+    private static final int DETAIL_START_TAG_LENGTH = DETAIL_TAG_PREFIX.length();
 
     /** 詳細タグの接尾辞 */
     public static final String DETAIL_TAG_START_END_STR = "_START>>";
@@ -101,8 +98,8 @@ public class JavelinParser
     /** PROP_JAVELINCONV_OBJECTプロパティのデフォルト値 */
     public static final String PROP_JAVELINCONV_OBJECT_DEFAULT = "false";
 
-    private static final String MESSAGE_FORMAT_ERROR = Messages
-            .getString("0000_actionLogError_actionLogFileFormatError"); //$NON-NLS-1$
+    private static final String MESSAGE_FORMAT_ERROR =
+            Messages.getString("0000_actionLogError_actionLogFileFormatError"); //$NON-NLS-1$
 
     /**
      * エラー出力用ストリーム。
@@ -166,7 +163,8 @@ public class JavelinParser
      * @throws ParseException
      *             ファイルが存在しない場合、ディレクトリの場合、 読み込み権限がない場合
      */
-    public void init() throws ParseException
+    public void init()
+        throws ParseException
     {
         // ファイルの開始行番号を1に初期化する。
         this.logFileLine_ = 1;
@@ -188,21 +186,20 @@ public class JavelinParser
 
                 // ログファイルが存在しない、もしくはファイルでない場合は、
                 // エラーを出力して失敗を返す。
-                if (this.logFile_.exists() == false
-                        || this.logFile_.isFile() == false)
+                if (this.logFile_.exists() == false || this.logFile_.isFile() == false)
                 {
-                    String message = MessageFormat.format(Messages
-                            .getString("0001_notExist"), new Object[]
-                    { this.logFileName_ });
+                    String message =
+                            MessageFormat.format(Messages.getString("0001_notExist"),
+                                                 new Object[]{this.logFileName_});
                     this.printError(message);
                     throw new ParseException(message);
                 }
                 // ファイルの読み込み権限がない場合は、エラーを出力して失敗を返す。
                 else if (this.logFile_.canRead() == false)
                 {
-                    String message = MessageFormat.format(Messages
-                            .getString("0002_unreadable"), new Object[]
-                    { this.logFileName_ });
+                    String message =
+                            MessageFormat.format(Messages.getString("0002_unreadable"),
+                                                 new Object[]{this.logFileName_});
                     this.printError(message);
                     throw new ParseException(message);
                 }
@@ -214,9 +211,9 @@ public class JavelinParser
         }
         catch (IOException exp)
         {
-            String message = MessageFormat.format(Messages
-                    .getString("0002_unreadable"), new Object[]
-            { this.logFileName_ });
+            String message =
+                    MessageFormat.format(Messages.getString("0002_unreadable"),
+                                         new Object[]{this.logFileName_});
             this.printError(message);
             throw new ParseException(message, exp);
         }
@@ -229,7 +226,8 @@ public class JavelinParser
      * @throws IOException
      *             パース対象のファイルのクローズに失敗した場合。
      */
-    public void close() throws IOException
+    public void close()
+        throws IOException
     {
         if (this.logBufferedReader_ != null)
         {
@@ -258,7 +256,9 @@ public class JavelinParser
      * @throws ParseException
      *             パースエラー発生時
      */
-    public JavelinLogElement nextElement() throws IOException, ParseException
+    public JavelinLogElement nextElement()
+        throws IOException,
+            ParseException
     {
         // ファイルの開始行を記録する
         int startLogLine = this.logFileLine_;
@@ -323,7 +323,8 @@ public class JavelinParser
      * @throws IOException
      *             ファイルの読み込みに失敗した場合
      */
-    public List<String> getBaseInfoList() throws IOException
+    public List<String> getBaseInfoList()
+        throws IOException
     {
         String baseInfoString;
 
@@ -375,7 +376,8 @@ public class JavelinParser
      *             詳細ログの読み込みに失敗した場合
      */
     public boolean getDetailInfo(final JavelinLogElement logElement)
-            throws ParseException, IOException
+        throws ParseException,
+            IOException
     {
         boolean result = false;
 
@@ -385,14 +387,12 @@ public class JavelinParser
         {
             this.isEOF_ = true;
         }
-        else if (nextInfoLine != null
-                && nextInfoLine.startsWith(DETAIL_TAG_PREFIX) == true)
+        else if (nextInfoLine != null && nextInfoLine.startsWith(DETAIL_TAG_PREFIX) == true)
         {
             result = true;
 
             // 詳細情報が例外を意味する"javelin.Exception"であるかをチェック
-            boolean isJavelinExceptionTag = nextInfoLine
-                    .indexOf(JAVELIN_EXCEPTION) >= 0;
+            boolean isJavelinExceptionTag = nextInfoLine.indexOf(JAVELIN_EXCEPTION) >= 0;
             if (isJavelinExceptionTag == true)
             {
                 // 詳細情報 "javelin.Exception"をセット
@@ -404,30 +404,23 @@ public class JavelinParser
 
             // 開始タグの末尾が正しい形になっているかチェック
             // 正しくない場合は、エラー出力して中断。
-            boolean isRightEnd = nextInfoLine
-                    .endsWith(DETAIL_TAG_START_END_STR);
+            boolean isRightEnd = nextInfoLine.endsWith(DETAIL_TAG_START_END_STR);
             if (isRightEnd == false)
             {
                 // 動作ログの現在の行番号を保持する
                 this.logFileLine_ = this.logBufferedReader_.getLineNumber();
 
-                String message = this
-                        .createLogParseErrorMsg(
-                                MESSAGE_FORMAT_ERROR,
-                                Messages
-                                .getString(
-                        "0000_actionLogError_beginningTabError"
-                                ),
-                                this.logFileLine_, null);
+                String message =
+                        this.createLogParseErrorMsg(MESSAGE_FORMAT_ERROR,
+                                                    Messages.getString("0000_actionLogError_beginningTabError"),
+                                                    this.logFileLine_, null);
                 this.printError(message);
                 return false;
             }
 
-            int endPos = nextInfoLine.length()
-                    - DETAIL_TAG_START_END_STR.length();
+            int endPos = nextInfoLine.length() - DETAIL_TAG_START_END_STR.length();
             // 詳細情報のタグタイプ名の取得
-            String detailTagType = nextInfoLine.substring(
-                    DETAIL_START_TAG_LENGTH, endPos);
+            String detailTagType = nextInfoLine.substring(DETAIL_START_TAG_LENGTH, endPos);
 
             // 詳細情報を保存するStringBuffer
             StringBuffer detailInfoBuffer = new StringBuffer();
@@ -435,30 +428,24 @@ public class JavelinParser
             // 詳細情報の中身を一行ずつ読み込む。
             // ファイルの最後まで読んでも終了タグが現れない場合は、エラー出力して中断。
             String detailInfoLine = this.logBufferedReader_.readLine();
-            while (detailInfoLine != null
-                    && detailInfoLine.startsWith(DETAIL_TAG_PREFIX) == false)
+            while (detailInfoLine != null && detailInfoLine.startsWith(DETAIL_TAG_PREFIX) == false)
             {
                 detailInfoBuffer.append(detailInfoLine);
                 detailInfoBuffer.append(System.getProperty("line.separator"));
                 detailInfoLine = this.logBufferedReader_.readLine();
                 if (detailInfoLine == null)
                 {
-                    String message = this
-                            .createLogParseErrorMsg(
-                                    MESSAGE_FORMAT_ERROR,
-                                    Messages
-                            .getString(
-                            "0000_actionLogError_noFinalTab"
-                            ),
-                            this.logBufferedReader_.getLineNumber(),
-                                    null);
+                    String message =
+                            this.createLogParseErrorMsg(MESSAGE_FORMAT_ERROR,
+                                                        Messages.getString("0000_actionLogError_noFinalTab"),
+                                                        this.logBufferedReader_.getLineNumber(),
+                                                        null);
                     this.printError(message);
                     return false;
                 }
             }
 
-            logElement
-                    .setDetailInfo(detailTagType, detailInfoBuffer.toString());
+            logElement.setDetailInfo(detailTagType, detailInfoBuffer.toString());
         }
         else
         {
@@ -477,17 +464,17 @@ public class JavelinParser
      * @param lineNum
      * @param log
      */
-    private String createLogParseErrorMsg(String message, final String cause,
-            final int lineNum, String log)
+    private String createLogParseErrorMsg(String message, final String cause, final int lineNum,
+            String log)
     {
         if (log == null)
         {
             log = "";
         }
 
-        message = MessageFormat.format(Messages
-                .getString("0000_actionLogError"), new Object[]
-        { message, cause, this.logFile_.getName(), lineNum, log });
+        message =
+                MessageFormat.format(Messages.getString("0000_actionLogError"), new Object[]{
+                        message, cause, this.logFile_.getName(), lineNum, log});
         return message;
     }
 
@@ -539,8 +526,7 @@ public class JavelinParser
             }
             try
             {
-                methodParam.setStartTime(NormalDateFormatter.parse(
-                        callTimeString).getTime());
+                methodParam.setStartTime(NormalDateFormatter.parse(callTimeString).getTime());
             }
             catch (java.text.ParseException ex)
             {
@@ -548,10 +534,9 @@ public class JavelinParser
             }
 
             // 現在パース中のメソッドのDuration Timeを取得する
-            Map<String, String> extraInfoMap = JavelinLogUtil.parseDetailInfo(
-                    targetMethod, JavelinParser.TAG_TYPE_EXTRAINFO);
-            String durationString = extraInfoMap
-                    .get(JavelinLogConstants.EXTRAPARAM_DURATION);
+            Map<String, String> extraInfoMap =
+                    JavelinLogUtil.parseDetailInfo(targetMethod, JavelinParser.TAG_TYPE_EXTRAINFO);
+            String durationString = extraInfoMap.get(JavelinLogConstants.EXTRAPARAM_DURATION);
             if (durationString != null)
             {
                 try
@@ -570,8 +555,7 @@ public class JavelinParser
             }
 
             // 開始時刻とDuration Timeから、メソッドの終了時刻を計算する
-            methodParam.setEndTime(methodParam.getStartTime()
-                    + methodParam.getDuration());
+            methodParam.setEndTime(methodParam.getStartTime() + methodParam.getDuration());
             methodParam.setOriginalDataMap(new HashMap<String, Double>());
             methodParam.setPureDataMap(new HashMap<String, Double>());
 
@@ -590,8 +574,7 @@ public class JavelinParser
             MethodParam methodParam = methodCallStack.pop();
             if (methodCallStack.size() > 0)
             {
-                MethodParam parentMethodParam = methodCallStack
-                        .get(methodCallStack.size() - 1);
+                MethodParam parentMethodParam = methodCallStack.get(methodCallStack.size() - 1);
                 parentMethodParam.subtractData(methodParam);
             }
             registerPureDataToJavelinLogElement(methodParam);
@@ -605,17 +588,16 @@ public class JavelinParser
      * @param methodParam メソッドパラメータ
      */
     @SuppressWarnings("deprecation")
-    private static void putOriginalValue(Map<String, String> pureKeyMap,
-            JavelinLogElement targetMethod, MethodParam methodParam)
+    private static void putOriginalValue(final Map<String, String> pureKeyMap,
+            final JavelinLogElement targetMethod, final MethodParam methodParam)
     {
         // 純粋値を求めるすべての項目に対して、現在値（ログファイルに記述されている値）をマップに登録する
         for (Map.Entry<String, String> entrySet : pureKeyMap.entrySet())
         {
             // 純粋値を計算する元となるキーと値
             String detailInformationKey = entrySet.getKey();
-            String originalString = JavelinParser
-                    .getValueFromExtraInfoOrJmxInfo(targetMethod,
-                            detailInformationKey);
+            String originalString =
+                    JavelinParser.getValueFromExtraInfoOrJmxInfo(targetMethod, detailInformationKey);
             double originalValue;
             if (originalString != null)
             {
@@ -634,10 +616,8 @@ public class JavelinParser
                 originalValue = 0;
             }
             String javelinLogFileParam = entrySet.getValue();
-            methodParam.getOriginalDataMap().put(javelinLogFileParam,
-                    originalValue);
-            methodParam.getPureDataMap().put(javelinLogFileParam,
-                    originalValue);
+            methodParam.getOriginalDataMap().put(javelinLogFileParam, originalValue);
+            methodParam.getPureDataMap().put(javelinLogFileParam, originalValue);
         }
     }
 
@@ -660,8 +640,7 @@ public class JavelinParser
         // Stackの中で、methodParamで示されるメソッドの開始時刻よりも前に
         // 実行が終了しているメソッドの純粋値を計算する
         long callStartTime = methodParam.getStartTime();
-        MethodParam parentMethodParam = methodCallStack.get(methodCallStack
-                .size() - 1);
+        MethodParam parentMethodParam = methodCallStack.get(methodCallStack.size() - 1);
         while (parentMethodParam.getEndTime() <= callStartTime)
         {
             methodCallStack.pop();
@@ -674,8 +653,7 @@ public class JavelinParser
 
             // 　現在着目しているメソッド（parentMethodParam）の親メソッドの値から、
             // 着目しているメソッドの値を引くことで、純粋値を計算する
-            MethodParam grandparentMethodParam = methodCallStack
-                    .get(methodCallStack.size() - 1);
+            MethodParam grandparentMethodParam = methodCallStack.get(methodCallStack.size() - 1);
             grandparentMethodParam.subtractData(parentMethodParam);
 
             // メソッドのマップに純粋値を登録する
@@ -694,19 +672,13 @@ public class JavelinParser
     {
         Map<String, String> pureKeyMap = new HashMap<String, String>();
         pureKeyMap.put(JavelinLogConstants.EXTRAPARAM_DURATION,
-            JavelinLogConstants.EXTRAPARAM_ELAPSEDTIME);
-        pureKeyMap
-                .put(
-            JavelinLogConstants.JMXPARAM_THREAD_CURRENT_THREAD_CPU_TIME_DELTA,
-            JavelinLogConstants.EXTRAPARAM_PURECPUTIME);
-        pureKeyMap
-                .put(
-            JavelinLogConstants.JMXPARAM_THREAD_CURRENT_THREAD_USER_TIME_DELTA,
-            JavelinLogConstants.EXTRAPARAM_PUREUSERTIME);
-        pureKeyMap
-                .put(
-            JavelinLogConstants.JMXPARAM_THREAD_THREADINFO_WAITED_TIME_DELTA,
-            JavelinLogConstants.EXTRAPARAM_PUREWAITEDTIME);
+                       JavelinLogConstants.EXTRAPARAM_ELAPSEDTIME);
+        pureKeyMap.put(JavelinLogConstants.JMXPARAM_THREAD_CURRENT_THREAD_CPU_TIME_DELTA,
+                       JavelinLogConstants.EXTRAPARAM_PURECPUTIME);
+        pureKeyMap.put(JavelinLogConstants.JMXPARAM_THREAD_CURRENT_THREAD_USER_TIME_DELTA,
+                       JavelinLogConstants.EXTRAPARAM_PUREUSERTIME);
+        pureKeyMap.put(JavelinLogConstants.JMXPARAM_THREAD_THREADINFO_WAITED_TIME_DELTA,
+                       JavelinLogConstants.EXTRAPARAM_PUREWAITEDTIME);
         return pureKeyMap;
     }
 
@@ -716,12 +688,10 @@ public class JavelinParser
      * @param methodParam
      *            メソッド
      */
-    private static void registerPureDataToJavelinLogElement(
-            final MethodParam methodParam)
+    private static void registerPureDataToJavelinLogElement(final MethodParam methodParam)
     {
         JavelinLogElement parentMethod = methodParam.getJavelinLogElement();
-        for (Map.Entry<String, Double> entrySet : methodParam.getPureDataMap()
-                .entrySet())
+        for (Map.Entry<String, Double> entrySet : methodParam.getPureDataMap().entrySet())
         {
             double value = entrySet.getValue();
             if (value < 0)
@@ -729,13 +699,10 @@ public class JavelinParser
                 value = 0;
             }
 
-            String extraInfoStr = parentMethod
-                    .getDetailInfo(JavelinParser.TAG_TYPE_EXTRAINFO);
-            String newExtraInfoStr = extraInfoStr + entrySet.getKey() + " = "
-                    + value + "\r\n";
+            String extraInfoStr = parentMethod.getDetailInfo(JavelinParser.TAG_TYPE_EXTRAINFO);
+            String newExtraInfoStr = extraInfoStr + entrySet.getKey() + " = " + value + "\r\n";
 
-            parentMethod.setDetailInfo(JavelinParser.TAG_TYPE_EXTRAINFO,
-                    newExtraInfoStr);
+            parentMethod.setDetailInfo(JavelinParser.TAG_TYPE_EXTRAINFO, newExtraInfoStr);
         }
     }
 
@@ -748,16 +715,14 @@ public class JavelinParser
      *            値を取得するキー
      * @return 値。値を取得できない場合は <code>null</code>
      */
-    private static String getValueFromExtraInfoOrJmxInfo(
-            final JavelinLogElement element, final String key)
+    private static String getValueFromExtraInfoOrJmxInfo(final JavelinLogElement element,
+            final String key)
     {
-        Map<String, String> map = JavelinLogUtil.parseDetailInfo(element,
-                TAG_TYPE_EXTRAINFO);
+        Map<String, String> map = JavelinLogUtil.parseDetailInfo(element, TAG_TYPE_EXTRAINFO);
         String pureValueString = map.get(key);
         if (pureValueString == null)
         {
-            map = JavelinLogUtil.parseDetailInfo(element,
-                    JavelinParser.TAG_TYPE_JMXINFO);
+            map = JavelinLogUtil.parseDetailInfo(element, JavelinParser.TAG_TYPE_JMXINFO);
             pureValueString = map.get(key);
         }
         return pureValueString;

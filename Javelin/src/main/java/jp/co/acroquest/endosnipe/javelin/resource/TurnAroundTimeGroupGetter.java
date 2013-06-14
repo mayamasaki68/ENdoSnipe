@@ -25,6 +25,9 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.resource;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,9 +38,6 @@ import jp.co.acroquest.endosnipe.communicator.entity.TelegramConstants;
 import jp.co.acroquest.endosnipe.javelin.RootInvocationManager;
 import jp.co.acroquest.endosnipe.javelin.bean.Invocation;
 import jp.co.acroquest.endosnipe.javelin.bean.TurnAroundTimeInfo;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
-import jp.co.acroquest.endosnipe.javelin.util.HashSet;
-import jp.co.acroquest.endosnipe.javelin.util.LinkedHashMap;
 
 /**
  * Turn Around Timeのグループを取得するクラス。

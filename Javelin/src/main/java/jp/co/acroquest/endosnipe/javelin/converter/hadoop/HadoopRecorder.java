@@ -25,6 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.converter.hadoop;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -58,7 +59,6 @@ import jp.co.acroquest.endosnipe.javelin.log.JavelinFileGenerator;
 import jp.co.acroquest.endosnipe.javelin.log.JavelinLogCallback;
 import jp.co.acroquest.endosnipe.javelin.record.AllRecordStrategy;
 import jp.co.acroquest.endosnipe.javelin.record.JvnFileNotifyCallback;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
 
 /**

@@ -15,16 +15,12 @@ package jp.co.acroquest.endosnipe.report.controller;
 import java.sql.Timestamp;
 import java.util.List;
 
-import jp.co.acroquest.endosnipe.report.controller.ProgressController;
-
 /**
  * レポート出力時の絞込み条件を示すオブジェクト。
  * 
  * @author M.Yoshida
  */
 public class ReportSearchCondition {
-	/** プログレスバーコントローラ */
-	private ProgressController progressController_;
 
 	/** 対象データベースリスト */
 	private List<String> databases_;
@@ -47,12 +43,6 @@ public class ReportSearchCondition {
 	/** PerformanceDoctorレポート出力で、同一ルールで絞り込むかどうか */
 	private boolean limitBySameRule_;
 
-	/**
-	 * @return the progressController
-	 */
-	public ProgressController getProgressController() {
-		return progressController_;
-	}
 
 	/**
 	 * @return the databases
@@ -80,14 +70,6 @@ public class ReportSearchCondition {
 	 */
 	public String getOutputFilePath() {
 		return outputFilePath_;
-	}
-
-	/**
-	 * @param progressController
-	 *            the progressController to set
-	 */
-	public void setProgressController(ProgressController progressController) {
-		progressController_ = progressController;
 	}
 
 	/**

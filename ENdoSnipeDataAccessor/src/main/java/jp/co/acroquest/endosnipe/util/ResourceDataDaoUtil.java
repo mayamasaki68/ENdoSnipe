@@ -42,7 +42,6 @@ import jp.co.acroquest.endosnipe.common.entity.MeasurementData;
 import jp.co.acroquest.endosnipe.common.entity.MeasurementDetail;
 import jp.co.acroquest.endosnipe.common.entity.ResourceData;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 import jp.co.acroquest.endosnipe.data.dao.JavelinMeasurementItemDao;
 import jp.co.acroquest.endosnipe.data.dao.MeasurementValueDao;
@@ -59,8 +58,7 @@ public class ResourceDataDaoUtil
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER =
-        ENdoSnipeLogger.getLogger(ResourceDataDaoUtil.class,
-                                  ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+        ENdoSnipeLogger.getLogger(ResourceDataDaoUtil.class);
 
     /** データベース名をキーとする、前回データを挿入したテーブルインデックスを保持するマップ */
     private static Map<String, Integer> prevTableIndexMap__ =

@@ -25,10 +25,6 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.data.db;
 
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPlugin;
-import jp.co.acroquest.endosnipe.data.preference.DBPreferenceUtil;
-
-import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
  * DBの接続情報を保存するクラスです。<br />
@@ -218,34 +214,6 @@ public class DBManager
     public static void setDbDir(String dbDir)
     {
         dbDir__ = dbDir;
-    }
-
-    /**
-     * 設定値を読み出します。
-     */
-    public static void readPreference()
-    {
-        IPreferenceStore store = ENdoSnipeDataAccessorPlugin.getDefault().getPreferenceStore();
-        String dbName = store.getString(DBPreferenceUtil.DBNAME_STORE);
-        String dbDir = store.getString(DBPreferenceUtil.BASEDIR_STORE);
-        String host = store.getString(DBPreferenceUtil.HOST_STORE);
-        String port = store.getString(DBPreferenceUtil.PORT_STORE);
-        String userName = store.getString(DBPreferenceUtil.USERNAME_STORE);
-        String password = store.getString(DBPreferenceUtil.PASSWORD_STORE);
-
-        if (DBPreferenceUtil.POSTGRE_SQL_NAME.equals(dbName) == true)
-        {
-            useDefault__ = false;
-        }
-        else
-        {
-            useDefault__ = true;
-        }
-        dbDir__ = dbDir;
-        hostName__ = host;
-        port__ = port;
-        userName__ = userName;
-        password__ = password;
     }
 
     /**

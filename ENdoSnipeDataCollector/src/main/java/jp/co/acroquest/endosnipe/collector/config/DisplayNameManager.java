@@ -33,7 +33,6 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 
 import jp.co.acroquest.endosnipe.collector.Bootstrap;
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.util.PathUtil;
 
@@ -87,9 +86,7 @@ public class DisplayNameManager
     public void init(final String lang)
     {
         // ログ出力用インスタンス
-        final ENdoSnipeLogger LOGGER =
-                   ENdoSnipeLogger.getLogger(Bootstrap.class,
-                                             ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+        final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(Bootstrap.class);
 
         if (lang == null || "".equals(lang))
         {
@@ -115,8 +112,7 @@ public class DisplayNameManager
         try
         {
             in =
-                 new BufferedReader(
-                        new InputStreamReader( new FileInputStream(file), "Windows-31J"));
+                 new BufferedReader(new InputStreamReader(new FileInputStream(file), "Windows-31J"));
 
             String line = "";
             // １行ずつ読み込み解析

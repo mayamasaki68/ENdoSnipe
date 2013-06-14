@@ -17,13 +17,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
-import jp.co.acroquest.endosnipe.report.entity.ApplicationRecord;
-import jp.co.acroquest.endosnipe.report.entity.ReportItemValue;
 import jp.co.acroquest.endosnipe.common.Constants;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.dao.ApplicationRecordAccessor;
-import jp.co.acroquest.endosnipe.report.dao.ReportDao;
+import jp.co.acroquest.endosnipe.report.entity.ApplicationRecord;
+import jp.co.acroquest.endosnipe.report.entity.ReportItemValue;
 
 /**
  * アプリケーション情報をDBから取得するアクセサクラス。
@@ -34,8 +31,7 @@ public class ApplicationRecordAccessor
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER     = ENdoSnipeLogger.getLogger(
-                                                            ApplicationRecordAccessor.class,
-                                                            ReporterPluginProvider.INSTANCE);
+                                                            ApplicationRecordAccessor.class);
 
     /** 最大件数 */
     public static final int              ITEM_COUNT = 200;

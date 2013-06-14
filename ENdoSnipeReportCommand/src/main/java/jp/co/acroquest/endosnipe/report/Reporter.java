@@ -17,6 +17,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 
 import jp.co.acroquest.endosnipe.collector.config.DataCollectorConfig;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
@@ -25,7 +26,6 @@ import jp.co.acroquest.endosnipe.report.controller.ReportPublishTask;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
 import jp.co.acroquest.endosnipe.report.controller.dispatcher.ReportPublishDispatcher;
-import jp.co.acroquest.endosnipe.report.mock.MockIProgressMonitor;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
@@ -36,189 +36,235 @@ import org.apache.tools.ant.taskdefs.Zip;
  * 
  * @author iida
  */
-public class Reporter {
+public class Reporter
+{
 
-	/** 開始／終了時刻を指定する文字列形式。 */
-	public static final String TIME_FORMAT = "yyyyMMdd_HHmmss";
+    /** 開始／終了時刻を指定する文字列形式。 */
+    public static final String           TIME_FORMAT = "yyyyMMdd_HHmmss";
 
-	/** ロガー */
-	private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-			ReportPublishDispatcher.class, ReporterPluginProvider.INSTANCE);
+    /** ロガー */
+    private static final ENdoSnipeLogger LOGGER      = ENdoSnipeLogger
+                                                             .getLogger(
+                                                                     ReportPublishDispatcher.class);
 
-	/**
-	 * コンストラクタ。
-	 */
-	public Reporter() {
+    /**
+     * コンストラクタ。
+     */
+    public Reporter()
+    {
 
-	}
+    }
 
-	/**
-	 * レポート作成を行います。<br/>
-	 * 
-	 * @param config
-	 *            DataCollectorの設定/定数を保持するオブジェクト
-	 * @param fmTime
-	 *            開始時刻
-	 * @param toTime
-	 *            終了時刻
-	 * @param reportPath
-	 *            出力先ディレクトリ
-	 * @param targetItemName
-	 *            レポート出力対象の親の項目名
-	 * @param reportName
-	 *            レポート名
-	 */
-	public void createReport(DataCollectorConfig config, Calendar fmTime,
-			Calendar toTime, String reportPath, String targetItemName,
-			String reportName) {
+    /**
+     * レポート作成を行います。<br/>
+     * 
+     * @param config
+     *            DataCollectorの設定/定数を保持するオブジェクト
+     * @param fmTime
+     *            開始時刻
+     * @param toTime
+     *            終了時刻
+     * @param reportPath
+     *            出力先ディレクトリ
+     * @param targetItemName
+     *            レポート出力対象の親の項目名
+     * @param reportName
+     *            レポート名
+     */
+    public void createReport(DataCollectorConfig config, Calendar fmTime,
+            Calendar toTime, String reportPath, String targetItemName,
+            String reportName)
+    {
 
-		// 開始時刻が終了時刻より未来を指していた場合はエラー
-		if (fmTime.compareTo(toTime) > 0) {
-			System.err.println("開始時刻が終了時刻より未来を指しています。");
-			return;
-		}
+        // 開始時刻が終了時刻より未来を指していた場合はエラー
+        if (fmTime.compareTo(toTime) > 0)
+        {
+            System.err.println("開始時刻が終了時刻より未来を指しています。");
+            return;
+        }
 
-		if (config == null) {
-			return;
-		}
+        if (config == null)
+        {
+            return;
+        }
 
-		// DBの諸設定を取得
-		String dbName = config.getDatabaseName();
-		String dbHost = config.getDatabaseHost();
-		String dbPort = config.getDatabasePort();
-		String dbUser = config.getDatabaseUserName();
-		String dbPass = config.getDatabasePassword();
+        // DBの諸設定を取得
+        String dbName = config.getDatabaseName();
+        String dbHost = config.getDatabaseHost();
+        String dbPort = config.getDatabasePort();
+        String dbUser = config.getDatabaseUserName();
+        String dbPass = config.getDatabasePassword();
 
-		// レポート作成に使用するDBを指定する
-		DBManager.updateSettings(false, "", dbHost, dbPort, dbName, dbUser,
-				dbPass);
+        // レポート作成に使用するDBを指定する
+        DBManager.updateSettings(false, "", dbHost, dbPort, dbName, dbUser,
+                dbPass);
 
-		// レポート作成時の各設定を行う
-		ReportType[] outputReportTypes = new ReportType[] { ReportType.OBJECT };
+        // レポート作成時の各設定を行う
+        ReportType[] outputReportTypes = new ReportType[]{ReportType.OBJECT};
 
-		// TODO PerformanceDoctor のルール設定を有効にする。
-		// // PerformanceDoctorのルールを設定する
-		// int selectionIndex = 0;
-		// RuleManager ruleManager = RuleManager.getInstance();
-		// RuleSetConfig[] ruleSetConfigs = ruleManager.getRuleSetConfigs();
-		// String id = ruleSetConfigs[selectionIndex].getId();
-		// ruleManager.changeActiveRuleSetByID(id);
+        // TODO PerformanceDoctor のルール設定を有効にする。
+        // // PerformanceDoctorのルールを設定する
+        // int selectionIndex = 0;
+        // RuleManager ruleManager = RuleManager.getInstance();
+        // RuleSetConfig[] ruleSetConfigs = ruleManager.getRuleSetConfigs();
+        // String id = ruleSetConfigs[selectionIndex].getId();
+        // ruleManager.changeActiveRuleSetByID(id);
 
-		Runnable callback = null;
+        Runnable callback = null;
 
-		// レポート出力ディレクトリを決定し、存在しなければ作成する
-		// レポート出力先ディレクトリ：
-		// <current-dir>/reports/<db-name>/<from>-<to>/
-		SimpleDateFormat format = new SimpleDateFormat(TIME_FORMAT);
-		String start = format.format(fmTime.getTime());
-		String end = format.format(toTime.getTime());
-		String leafDirectoryName = reportName + "_" + start + "-" + end;
+        // レポート出力ディレクトリを決定し、存在しなければ作成する
+        // レポート出力先ディレクトリ：
+        // <current-dir>/reports/<db-name>/<from>-<to>/
+        SimpleDateFormat format = new SimpleDateFormat(TIME_FORMAT);
+        String start = format.format(fmTime.getTime());
+        String end = format.format(toTime.getTime());
+        String leafDirectoryName = reportName + "_" + start + "-" + end;
 
-		String outputFilePath = reportPath + File.separator + dbName
-				+ File.separator + leafDirectoryName;
+        String outputFilePath = reportPath + File.separator + dbName
+                + File.separator + leafDirectoryName;
 
-		File outputDir = new File(outputFilePath);
-		if (outputDir.exists() == false) {
-			outputDir.mkdirs();
-		}
+        File outputDir = new File(outputFilePath);
+        if (outputDir.exists() == false)
+        {
+            outputDir.mkdirs();
+        }
 
-		// TODO 絞り込みのルールを設定する
-		boolean limitSameCause = false;
-		boolean limitBySameRule = false;
+        // TODO 絞り込みのルールを設定する
+        boolean limitSameCause = false;
+        boolean limitBySameRule = false;
 
-		// レポート出力期間の条件を設定する
-		ReportSearchCondition searchCondition = new ReportSearchCondition();
-		searchCondition.setDatabases(Arrays.asList(dbName));
-		searchCondition.setStartDate(new Timestamp(fmTime.getTimeInMillis()));
-		searchCondition.setEndDate(new Timestamp(toTime.getTimeInMillis()));
-		searchCondition.setOutputFilePath(outputFilePath);
-		searchCondition.setLimitSameCause(limitSameCause);
-		searchCondition.setLimitBySameRule(limitBySameRule);
+        // レポート出力期間の条件を設定する
+        ReportSearchCondition searchCondition = new ReportSearchCondition();
+        searchCondition.setDatabases(Arrays.asList(dbName));
+        searchCondition.setStartDate(new Timestamp(fmTime.getTimeInMillis()));
+        searchCondition.setEndDate(new Timestamp(toTime.getTimeInMillis()));
+        searchCondition.setOutputFilePath(outputFilePath);
+        searchCondition.setLimitSameCause(limitSameCause);
+        searchCondition.setLimitBySameRule(limitBySameRule);
 
-		// 絶対パスを取得
-		File currentDirectory = new File(".");
+        // 絶対パスを取得
+        File currentDirectory = new File(".");
 
-		String outputDirFullPath = currentDirectory.getAbsolutePath()
-				+ File.separator + reportPath + File.separator + dbName
-				+ File.separator;
+        String outputDirFullPath = currentDirectory.getAbsolutePath()
+                + File.separator + reportPath + File.separator + dbName
+                + File.separator;
 
-		// レポート情報をログに出力する
-		LOGGER.log(LogIdConstants.OUTPUT_REPORT_INFO, outputDirFullPath,
-				leafDirectoryName, targetItemName);
+        // レポート情報をログに出力する
+        LOGGER.log(LogIdConstants.OUTPUT_REPORT_INFO, outputDirFullPath,
+                leafDirectoryName, targetItemName);
 
-		// ReportPublishTaskを実行し、レポート作成を行う
-		try {
-			ReportPublishTask reportTask = new ReportPublishTask(
-					searchCondition, outputReportTypes, callback);
-			reportTask.setUser(true);
+        // ReportPublishTaskを実行し、レポート作成を行う
+        try
+        {
+            ReportPublishTask reportTask = new ReportPublishTask(
+                    searchCondition, outputReportTypes, callback);
 
-			MockIProgressMonitor mockIProgressMonitor = new MockIProgressMonitor();
+            // レポートを出力する
+            reportTask.createReport(targetItemName);
+        }
+        catch (Exception e)
+        {
+            LOGGER.log(LogIdConstants.REPORT_PUBLISH_STOPPED_WARN,
+                    outputDirFullPath + leafDirectoryName);
+            return;
+        }
 
-			// レポートを出力する
-			reportTask.createReport(mockIProgressMonitor, targetItemName);
-		} catch (Exception e) {
-			LOGGER.log(LogIdConstants.REPORT_PUBLISH_STOPPED_WARN,
-					outputDirFullPath + leafDirectoryName);
-			return;
-		}
+        // zip圧縮する
+        Project project = new Project();
+        project.init();
 
-		// zip圧縮する
-		Project project = new Project();
-		project.init();
+        try
+        {
+            File baseDir = new File(outputFilePath);
+            Zip zipper = new Zip();
+            zipper.setProject(project);
+            zipper.setTaskName("zip");
+            zipper.setTaskType("zip");
+            zipper.setDestFile(new File(outputFilePath + ".zip"));
+            zipper.setBasedir(baseDir);
+            zipper.execute();
 
-		try {
-			File baseDir = new File(outputFilePath);
-			Zip zipper = new Zip();
-			zipper.setProject(project);
-			zipper.setTaskName("zip");
-			zipper.setTaskType("zip");
-			zipper.setDestFile(new File(outputFilePath + ".zip"));
-			zipper.setBasedir(baseDir);
-			zipper.execute();
+            // zip化に成功したら元のディレクトリは削除する
+            boolean deleted = deleteDir(baseDir);
+            if (deleted == false)
+            {
+                LOGGER.log(LogIdConstants.FAIL_TO_DELETE_DIR, outputDirFullPath
+                        + leafDirectoryName);
+            }
+        }
+        catch (BuildException bex)
+        {
+            LOGGER.log(LogIdConstants.FAIL_TO_ZIP, outputDirFullPath
+                    + leafDirectoryName);
+        }
+    }
 
-			// zip化に成功したら元のディレクトリは削除する
-			boolean deleted = deleteDir(baseDir);
-			if (deleted == false) {
-				LOGGER.log(LogIdConstants.FAIL_TO_DELETE_DIR, outputDirFullPath
-						+ leafDirectoryName);
-			}
-		} catch (BuildException bex) {
-			LOGGER.log(LogIdConstants.FAIL_TO_ZIP, outputDirFullPath
-					+ leafDirectoryName);
-		}
-	}
+    /**
+     * 指定したディレクトリごと削除する。
+     * 
+     * @param dir
+     *            削除するディレクトリ。
+     * @return ディレクトリの削除に失敗した場合。
+     */
+    private static boolean deleteDir(File dir)
+    {
+        boolean result = true;
+        File[] children = dir.listFiles();
+        for (File child : children)
+        {
+            if (child.isDirectory() == true)
+            {
+                // ディレクトリは再帰して削除を行う
+                result = deleteDir(child);
+                if (result == false)
+                {
+                    break;
+                }
+            }
+            else
+            {
+                // ファイルは単に削除を行う
+                result = child.delete();
+                if (result == false)
+                {
+                    break;
+                }
+            }
+        }
 
-	/**
-	 * 指定したディレクトリごと削除する。
-	 * 
-	 * @param dir
-	 *            削除するディレクトリ。
-	 * @return ディレクトリの削除に失敗した場合。
-	 */
-	private static boolean deleteDir(File dir) {
-		boolean result = true;
-		File[] children = dir.listFiles();
-		for (File child : children) {
-			if (child.isDirectory() == true) {
-				// ディレクトリは再帰して削除を行う
-				result = deleteDir(child);
-				if (result == false) {
-					break;
-				}
-			} else {
-				// ファイルは単に削除を行う
-				result = child.delete();
-				if (result == false) {
-					break;
-				}
-			}
-		}
+        // 全ての削除に成功していれば中身は空なので、自分のディレクトリを削除する
+        if (result == true)
+        {
+            result = dir.delete();
+        }
 
-		// 全ての削除に成功していれば中身は空なので、自分のディレクトリを削除する
-		if (result == true) {
-			result = dir.delete();
-		}
+        return result;
+    }
 
-		return result;
-	}
+    public static void main(String[] args) throws Exception
+    {
+        Reporter reporter = new Reporter();
+        DataCollectorConfig config = new DataCollectorConfig();
+        config.setDatabaseHost("126.0.56.101");
+        config.setDatabasePort("5432");
+        config.setDatabaseName("endosnipedb");
+        config.setDatabaseUserName("postgres");
+        config.setDatabasePassword("postgres");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        
+        Date fmDate = format.parse("2013/06/04 13:00");
+        Calendar fmTime = Calendar.getInstance();
+        fmTime.setTime(fmDate);
+        
+        Date toDate = format.parse("2013/06/04 14:00");
+        Calendar toTime = Calendar.getInstance();
+        toTime.setTime(toDate);
+
+        
+        String reportPath = "report";
+        String targetItemName = "/";
+        String reportName = "test";
+        reporter.createReport(config, fmTime, toTime, reportPath,
+                targetItemName, reportName);
+    }
 }

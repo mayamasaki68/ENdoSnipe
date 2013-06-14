@@ -6,13 +6,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ENdoSnipeReporter"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ENdoSnipeDataAccessor"/>
 	<classpathentry kind="lib" path="lib/ant.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.core.jobs_3.4.100.v20090429-1800.jar"/>
 	<classpathentry kind="lib" path="lib/ant-launcher.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.equinox.common_3.3.0.v20070426.jar"/>
-	<classpathentry kind="lib" path="lib/dependency/endosnipe-common-5.0.3.jar"/>
-	<classpathentry kind="lib" path="lib/dependency/endosnipe-communicator-5.0.3.jar"/>
-	<classpathentry kind="lib" path="lib/dependency/endosnipe-dataaccessor-5.0.3.jar"/>
-	<classpathentry kind="lib" path="lib/dependency/endosnipe-reporter.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ENdoSnipeCommon"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

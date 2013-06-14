@@ -27,8 +27,8 @@ package jp.co.acroquest.endosnipe.javelin.converter.concurrent.monitor;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.WeakHashMap;
 
-import jp.co.acroquest.endosnipe.javelin.util.ImproveWeakHashMap;
 
 /**
  * ConcurrentMonitorObjectの追加、参照、削除を行うクラスです。
@@ -45,8 +45,8 @@ public class ConcurrentAccessRegistry
      */
     public ConcurrentAccessRegistry()
     {
-        ImproveWeakHashMap<Object, ConcurrentMonitorObject> map =
-                new ImproveWeakHashMap<Object, ConcurrentMonitorObject>();
+        WeakHashMap<Object, ConcurrentMonitorObject> map =
+                new WeakHashMap<Object, ConcurrentMonitorObject>();
         entryMap_ = Collections.synchronizedMap(map);
     }
 

@@ -25,9 +25,8 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.event;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
-
-import jp.co.acroquest.endosnipe.javelin.util.LinkedHashMap;
 
 /**
  * Javelinの共通イベントクラス。

@@ -30,7 +30,6 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 
 import org.apache.commons.dbcp.ConnectionFactory;
@@ -48,8 +47,7 @@ import org.apache.commons.pool.ObjectPool;
 public class H2DataSourceCreator extends AbstractDataSourceCreator implements LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(H2DataSourceCreator.class,
-                                      ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(H2DataSourceCreator.class);
 
     private static final String USER_NAME = "sa";
 

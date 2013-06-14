@@ -51,11 +51,13 @@ call build_java.bat
 set JAVA_HOME=%JAVA_HOME_60%
 set PATH=%JAVA_HOME%\bin;%PATH%
 
-cd ..\Dashboard
+pushd ..\Dashboard
 
 call ant dist
 
 copy target\Dashboard.war ..\ENdoSnipe\release
+
+popd
 
 echo ƒrƒ‹ƒh‚ªŠ®—¹‚µ‚Ü‚µ‚½B
 

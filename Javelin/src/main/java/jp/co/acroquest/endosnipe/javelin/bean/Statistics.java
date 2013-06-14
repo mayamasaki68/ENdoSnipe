@@ -25,7 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.bean;
 
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

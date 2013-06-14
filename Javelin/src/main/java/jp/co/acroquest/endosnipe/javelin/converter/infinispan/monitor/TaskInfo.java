@@ -1,8 +1,8 @@
 package jp.co.acroquest.endosnipe.javelin.converter.infinispan.monitor;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 import net.arnx.jsonic.JSON;
 
 /**

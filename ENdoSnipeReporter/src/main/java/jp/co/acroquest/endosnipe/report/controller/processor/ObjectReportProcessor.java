@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,10 +23,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import jp.co.acroquest.endosnipe.common.Constants;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -47,7 +44,7 @@ import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
 public class ObjectReportProcessor extends ReportPublishProcessorBase {
 	/** ÉçÉKÅ[ */
 	private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-			ObjectReportProcessor.class, ReporterPluginProvider.INSTANCE);
+			ObjectReportProcessor.class);
 
 	/**
 	 * ReportProcessorÇê∂ê¨Ç∑ÇÈÅB

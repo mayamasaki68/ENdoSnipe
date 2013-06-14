@@ -26,10 +26,10 @@
 package jp.co.acroquest.endosnipe.javelin;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
 import jp.co.acroquest.endosnipe.javelin.converter.Converter;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * コンバータをキャッシュするプールです。

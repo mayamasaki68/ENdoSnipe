@@ -45,7 +45,7 @@ import jp.co.acroquest.endosnipe.perfdoctor.rule.RuleManager;
  */
 public class PerfDoctor
 {
-    private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(PerfDoctor.class, null);
+    private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(PerfDoctor.class);
 
     /**
      * パフォーマンスの判定を実施するルールのリスト。
@@ -112,7 +112,7 @@ public class PerfDoctor
      * @return 警告となった結果の要素のリスト
      */
     @SuppressWarnings("deprecation")
-	public List<WarningUnit> judgeJavelinLog(final List<JavelinLogElement> elementList)
+    public List<WarningUnit> judgeJavelinLog(final List<JavelinLogElement> elementList)
     {
         List<WarningUnit> result = new ArrayList<WarningUnit>();
 
@@ -160,7 +160,7 @@ public class PerfDoctor
      * @return 変換したリスト
      */
     @SuppressWarnings("deprecation")
-	private List<JavelinLogElement> parseJavelinLogFileInternal(final JavelinParser javelinParser)
+    private List<JavelinLogElement> parseJavelinLogFileInternal(final JavelinParser javelinParser)
     {
         List<JavelinLogElement> elementList = null;
         try

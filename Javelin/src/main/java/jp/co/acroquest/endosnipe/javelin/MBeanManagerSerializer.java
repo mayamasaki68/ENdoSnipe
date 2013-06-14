@@ -31,12 +31,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
 import jp.co.acroquest.endosnipe.javelin.bean.Component;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 
 /**
  * シリアライズ処理を行うクラス。<br />

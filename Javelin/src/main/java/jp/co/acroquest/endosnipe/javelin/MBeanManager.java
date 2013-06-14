@@ -27,13 +27,13 @@ package jp.co.acroquest.endosnipe.javelin;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.javelin.bean.Component;
 import jp.co.acroquest.endosnipe.javelin.bean.ExcludeMonitor;
 import jp.co.acroquest.endosnipe.javelin.bean.Invocation;
 import jp.co.acroquest.endosnipe.javelin.bean.TripleState;
 import jp.co.acroquest.endosnipe.javelin.converter.util.CalledMethodCounter;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * コンポーネントを管理するクラス。<br />

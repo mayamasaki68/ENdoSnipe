@@ -27,11 +27,11 @@ package jp.co.acroquest.endosnipe.javelin.converter.leak.monitor;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 public abstract class ClassHistogramMonitor
 {

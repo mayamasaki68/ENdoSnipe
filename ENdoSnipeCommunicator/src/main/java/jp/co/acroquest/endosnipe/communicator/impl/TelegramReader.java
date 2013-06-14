@@ -35,7 +35,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.communicator.ENdoSnipeCommunicatorPluginProvider;
 import jp.co.acroquest.endosnipe.communicator.TelegramListener;
 import jp.co.acroquest.endosnipe.communicator.TelegramUtil;
 import jp.co.acroquest.endosnipe.communicator.entity.Header;
@@ -51,8 +50,7 @@ public class TelegramReader implements Runnable
 {
     /** ÉçÉKÅ[ÉNÉâÉX */
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(TelegramReader.class,
-                                      ENdoSnipeCommunicatorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(TelegramReader.class);
 
     private static final int SO_TIMEOUT = 10000;
 

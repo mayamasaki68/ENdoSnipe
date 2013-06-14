@@ -29,7 +29,6 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.collector.config.RotateConfig;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
@@ -46,11 +45,10 @@ public class MeasureLogRotateTask implements LogRotateTask
 {
     /** ロガー。 */
     private static final ENdoSnipeLogger LOGGER =
-                          ENdoSnipeLogger.getLogger(MeasureLogRotateTask.class,
-                                                    ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                  ENdoSnipeLogger.getLogger(MeasureLogRotateTask.class);
 
     /** ローテート用設定 */
-    private final RotateConfig           config_;
+    private final RotateConfig config_;
 
     /**
      * コンストラクタ
@@ -73,8 +71,9 @@ public class MeasureLogRotateTask implements LogRotateTask
             return;
         }
 
-        Calendar deleteTimeCalender = 
-                RotateUtil.getBeforeDate(this.config_.getMeasureUnitByCalendar(), period);
+        Calendar deleteTimeCalender =
+                                      RotateUtil.getBeforeDate(this.config_.getMeasureUnitByCalendar(),
+                                                               period);
 
         Timestamp deleteLimit = new Timestamp(deleteTimeCalender.getTimeInMillis());
 

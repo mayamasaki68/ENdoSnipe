@@ -40,7 +40,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.collector.exception.InitializeException;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
@@ -134,8 +133,7 @@ import jp.co.acroquest.endosnipe.data.db.DatabaseType;
 public class ConfigurationReader
 {
     private static final ENdoSnipeLogger logger_ =
-                                                   ENdoSnipeLogger.getLogger(ConfigurationReader.class,
-                                                                             ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                   ENdoSnipeLogger.getLogger(ConfigurationReader.class);
 
     /** DataCollectorConfig */
     private static DataCollectorConfig config__ = null;

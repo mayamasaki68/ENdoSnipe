@@ -31,9 +31,7 @@ public class ENdoSnipeLoggerTest extends TestCase
 {
     public void testLog()
     {
-        ENdoSnipeLogger logger =
-                ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class,
-                                          ENdoSnipeCommonPluginProvider.INSTANCE);
+        ENdoSnipeLogger logger = ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class);
         logger.error("ErrorLogTest");
     }
 
@@ -44,9 +42,7 @@ public class ENdoSnipeLoggerTest extends TestCase
     public void testCreateMessage_MessageIsNull()
     {
         // èÄîı
-        ENdoSnipeLogger logger =
-                ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class,
-                                          ENdoSnipeCommonPluginProvider.INSTANCE);
+        ENdoSnipeLogger logger = ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class);
 
         // é¿é{ÅEåüèÿ
         try
@@ -67,9 +63,7 @@ public class ENdoSnipeLoggerTest extends TestCase
     public void testCreateMessage_MessageIsBlank()
     {
         // èÄîı
-        ENdoSnipeLogger logger =
-                ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class,
-                                          ENdoSnipeCommonPluginProvider.INSTANCE);
+        ENdoSnipeLogger logger = ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class);
 
         // é¿é{ÅEåüèÿ
         try
@@ -90,9 +84,7 @@ public class ENdoSnipeLoggerTest extends TestCase
     public void testCreateMessage_MessageIsNotNull()
     {
         // èÄîı
-        ENdoSnipeLogger logger =
-                ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class,
-                                          ENdoSnipeCommonPluginProvider.INSTANCE);
+        ENdoSnipeLogger logger = ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class);
 
         // é¿é{ÅEåüèÿ
         try
@@ -113,9 +105,7 @@ public class ENdoSnipeLoggerTest extends TestCase
     public void testCreateMessage_Object()
     {
         // èÄîı
-        ENdoSnipeLogger logger =
-                ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class,
-                                          ENdoSnipeCommonPluginProvider.INSTANCE);
+        ENdoSnipeLogger logger = ENdoSnipeLogger.getLogger(ENdoSnipeLoggerTest.class);
         Object messageObject = new Object() {
             @Override
             public String toString()

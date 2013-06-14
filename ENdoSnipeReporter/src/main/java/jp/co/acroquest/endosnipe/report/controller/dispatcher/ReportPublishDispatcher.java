@@ -13,7 +13,6 @@
 package jp.co.acroquest.endosnipe.report.controller.dispatcher;
 
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -32,8 +31,7 @@ public class ReportPublishDispatcher
     /** ロガー */
     private static final ENdoSnipeLogger   LOGGER     =
                                                         ENdoSnipeLogger.getLogger(
-                                                                                  ReportPublishDispatcher.class,
-                                                                                  ReporterPluginProvider.INSTANCE);
+                                                                                  ReportPublishDispatcher.class);
 
     /** インスタンス保持用フィールド */
     private static ReportPublishDispatcher instance__ = null;

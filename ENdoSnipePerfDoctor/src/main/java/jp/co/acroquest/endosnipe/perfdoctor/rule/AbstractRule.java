@@ -45,8 +45,7 @@ import jp.co.acroquest.endosnipe.perfdoctor.WarningUnitUtil;
 public abstract class AbstractRule implements PerformanceRule
 {
     private static final ENdoSnipeLogger LOGGER             =
-                                                              ENdoSnipeLogger.getLogger(AbstractRule.class,
-                                                                                        null);
+                                                              ENdoSnipeLogger.getLogger(AbstractRule.class);
 
     /** ÉãÅ[ÉãID */
     public String                        id;
@@ -341,7 +340,7 @@ public abstract class AbstractRule implements PerformanceRule
      * @param throwable èoóÕÇ∑ÇÈThrowable
      */
     @SuppressWarnings("deprecation")
-	protected void log(final String message, final JavelinLogElement element,
+    protected void log(final String message, final JavelinLogElement element,
             final Throwable throwable)
     {
         String text = "";

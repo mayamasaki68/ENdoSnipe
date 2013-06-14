@@ -36,7 +36,6 @@ import javax.sql.DataSource;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.util.SQLUtil;
 import jp.co.acroquest.endosnipe.data.DBInitializer;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 
 import org.apache.commons.dbcp.ConnectionFactory;
@@ -54,8 +53,7 @@ import org.apache.commons.pool.ObjectPool;
 public class PostgresDataSourceCreator extends AbstractDataSourceCreator implements LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-                                                      PostgresDataSourceCreator.class,
-                                                      ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+                                                      PostgresDataSourceCreator.class);
 
     /** PostgreSQLデータベースのドライバクラス名称 */
     private static final String           POSTGRES_DRIVER = "org.postgresql.Driver";

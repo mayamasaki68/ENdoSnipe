@@ -45,7 +45,6 @@ import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.util.NetworkUtil;
 import jp.co.acroquest.endosnipe.communicator.CommunicationClient;
 import jp.co.acroquest.endosnipe.communicator.CommunicatorListener;
-import jp.co.acroquest.endosnipe.communicator.ENdoSnipeCommunicatorPluginProvider;
 import jp.co.acroquest.endosnipe.communicator.TelegramListener;
 import jp.co.acroquest.endosnipe.communicator.TelegramUtil;
 import jp.co.acroquest.endosnipe.communicator.accessor.ConnectNotifyAccessor;
@@ -61,8 +60,7 @@ public class CommunicationClientImpl implements CommunicationClient, Runnable
 {
 	/** ロガークラス */
 	private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-			CommunicationClientImpl.class,
-			ENdoSnipeCommunicatorPluginProvider.INSTANCE);
+			CommunicationClientImpl.class);
 
 	/** をミリ秒単位で表した1秒 */
 	private static final int SECOND_ON_MILLIS = 1000;

@@ -31,6 +31,8 @@ import java.lang.management.ThreadMXBean;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,8 +45,6 @@ import jp.co.acroquest.endosnipe.javelin.JavelinTransformer;
 import jp.co.acroquest.endosnipe.javelin.StatsJavelinRecorder;
 import jp.co.acroquest.endosnipe.javelin.converter.wait.monitor.WaitMonitor;
 import jp.co.acroquest.endosnipe.javelin.event.DeadLockDetectedEvent;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
-import jp.co.acroquest.endosnipe.javelin.util.HashSet;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
 
 /**

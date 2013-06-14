@@ -58,7 +58,8 @@ public class AlarmThresholdProcessor implements AlarmProcessor
         {
             AlarmEntry alarmEntry = new AlarmEntry();
             alarmEntry.setSendAlarm(false);
-            alarmEntry.setAlarmLevel(JavelinDataLogger.NORMAL_ALARM_LEVEL);
+            alarmEntry.setAlarmState(JavelinDataLogger.NORMAL_ALARM_LEVEL);
+            alarmEntry.setSignalLevel(signalDefinition.getLevel());
             return alarmEntry;
         }
         String matchingPattern = signalDefinition.getMatchingPattern();

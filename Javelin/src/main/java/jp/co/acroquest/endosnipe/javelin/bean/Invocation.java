@@ -28,12 +28,12 @@ package jp.co.acroquest.endosnipe.javelin.bean;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.common.event.EventConstants;
 import jp.co.acroquest.endosnipe.common.parser.JavelinLogConstants;
 import jp.co.acroquest.endosnipe.javelin.CallTreeNode;
 import jp.co.acroquest.endosnipe.javelin.converter.util.CalledMethodCounter;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * メソッド呼び出しの統計情報を記録する。

@@ -41,20 +41,19 @@ import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 public class JavelinDataQueue implements LogMessageCodes, CommonLogMessageCodes
 {
     /** キューの最大要素数 */
-    private static final int                 QUEUE_SIZE       = 100;
+    private static final int QUEUE_SIZE = 100;
 
     /** キューへデータを投入する際のタイムアウト時間(ミリ秒) */
-    private static final int                 OFFERING_TIMEOUT = 10000;
+    private static final int OFFERING_TIMEOUT = 10000;
 
     /** キューからデータを取り出す際のタイムアウト時間(ミリ秒) */
-    private static final int                 TAKING_TIMEOUT   = 1000;
+    private static final int TAKING_TIMEOUT = 1000;
 
-    private static ENdoSnipeLogger           logger__          =
-                        ENdoSnipeLogger.getLogger(JavelinDataQueue.class,
-                                                  ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+    private static ENdoSnipeLogger logger__ = ENdoSnipeLogger.getLogger(JavelinDataQueue.class);
 
-    private final BlockingQueue<JavelinData> queue_           =
-                                        new ArrayBlockingQueue<JavelinData>(QUEUE_SIZE);
+    private final BlockingQueue<JavelinData> queue_ =
+                                                      new ArrayBlockingQueue<JavelinData>(
+                                                                                          QUEUE_SIZE);
 
     /**
      * キューに {@link JavelinData} を追加します。<br />

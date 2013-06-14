@@ -25,7 +25,6 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.collector.listener;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.collector.manager.SignalStateManager;
 import jp.co.acroquest.endosnipe.collector.processor.AlarmData;
@@ -47,8 +46,7 @@ public class SignalChangeListener extends AbstractTelegramListener implements Te
         LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(SignalChangeListener.class,
-                                                                            ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                  ENdoSnipeLogger.getLogger(SignalChangeListener.class);
 
     private static final int ITEM_VALUE_SIGNAL_ID = 0;
 

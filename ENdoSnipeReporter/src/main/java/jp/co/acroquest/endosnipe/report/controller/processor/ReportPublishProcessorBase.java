@@ -14,7 +14,6 @@ package jp.co.acroquest.endosnipe.report.controller.processor;
 
 import java.io.File;
 
-import jp.co.acroquest.endosnipe.report.controller.ProgressController;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -100,31 +99,14 @@ public abstract class ReportPublishProcessorBase implements ReportPublishProcess
         outputDir_ = cond.getOutputFilePath();
 
         ReportProcessReturnContainer retContainer = new ReportProcessReturnContainer();
-        ProgressController progressCtrl = cond.getProgressController();
-
-        if (progressCtrl.isCanceled())
-        {
-            throw new InterruptedException();
-        }
-        progressCtrl.nextPhase(GET_DATA_PHASE_KEY);
 
         Object rawData = getReportPlotData(cond, retContainer);
 
-        if (progressCtrl.isCanceled())
-        {
-            throw new InterruptedException();
-        }
 
         if (rawData != null)
         {
-            progressCtrl.nextPhase(CONVERT_DATA_PHASE_KEY);
             Object convertedPlotData = convertPlotData(rawData, cond, retContainer);
 
-            if (progressCtrl.isCanceled())
-            {
-                throw new InterruptedException();
-            }
-            progressCtrl.nextPhase(OUTPUT_DATA_PHASE_KEY);
             outputReport(convertedPlotData, cond, retContainer);
         }
 

@@ -25,6 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.communicate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +39,6 @@ import jp.co.acroquest.endosnipe.javelin.MBeanManager;
 import jp.co.acroquest.endosnipe.javelin.bean.Component;
 import jp.co.acroquest.endosnipe.javelin.bean.ExcludeMonitor;
 import jp.co.acroquest.endosnipe.javelin.bean.Invocation;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  *  Invocationから電文を作成するクラスです。<br />

@@ -27,10 +27,9 @@ package jp.co.acroquest.endosnipe.javelin.converter.leak.monitor;
 
 import java.lang.ref.WeakReference;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-
-import jp.co.acroquest.endosnipe.javelin.util.LinkedHashSet;
 
 /**
  * CollectionTraceManager‚É‚¨‚¯‚éCollection‚ÌƒGƒ“ƒgƒŠB

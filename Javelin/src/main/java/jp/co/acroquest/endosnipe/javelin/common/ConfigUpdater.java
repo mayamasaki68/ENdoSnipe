@@ -28,6 +28,7 @@ package jp.co.acroquest.endosnipe.javelin.common;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +39,6 @@ import jp.co.acroquest.endosnipe.javelin.RootInvocationManager;
 import jp.co.acroquest.endosnipe.javelin.converter.linear.monitor.LinearSearchMonitor;
 import jp.co.acroquest.endosnipe.javelin.event.JavelinEventCounter;
 import jp.co.acroquest.endosnipe.javelin.jdbc.common.JdbcJavelinConfig;
-import jp.co.acroquest.endosnipe.javelin.util.LinkedHashMap;
 /**
  * リモート設定機能から現在の設定値を更新するアダプタ
  * 

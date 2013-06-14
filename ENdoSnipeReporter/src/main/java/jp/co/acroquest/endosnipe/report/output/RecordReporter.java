@@ -8,16 +8,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
+import jp.co.acroquest.endosnipe.common.util.CSVTokenizer;
+import jp.co.acroquest.endosnipe.common.util.PathUtil;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
 import jp.co.acroquest.endosnipe.report.entity.ItemData;
 import jp.co.acroquest.endosnipe.report.entity.ItemRecord;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.common.util.CSVTokenizer;
-import jp.co.acroquest.endosnipe.common.util.PathUtil;
-import jp.co.acroquest.endosnipe.report.output.RecordReporter;
 
 import org.bbreak.excella.reports.exporter.ExcelExporter;
 import org.bbreak.excella.reports.model.ReportBook;
@@ -37,7 +35,7 @@ import org.bbreak.excella.reports.tag.SingleParamParser;
 public class RecordReporter<E> {
 	/** ロガー */
 	private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-			RecordReporter.class, ReporterPluginProvider.INSTANCE);
+			RecordReporter.class);
 
 	private static final String XLS_EXTENTION = ".xls";
 

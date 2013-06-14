@@ -21,8 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jp.co.acroquest.endosnipe.common.Constants;
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -34,10 +35,6 @@ import jp.co.acroquest.endosnipe.report.entity.ItemRecord;
 import jp.co.acroquest.endosnipe.report.entity.PoolSizeRecord;
 import jp.co.acroquest.endosnipe.report.output.RecordReporter;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.Constants;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.PoolSizeReportProcessor;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -50,7 +47,7 @@ public class PoolSizeReportProcessor extends ReportPublishProcessorBase
 {
     /** ÉçÉKÅ[ */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            PoolSizeReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            PoolSizeReportProcessor.class);
 
     /**
      * ReportProcessorÇê∂ê¨Ç∑ÇÈÅB<br>

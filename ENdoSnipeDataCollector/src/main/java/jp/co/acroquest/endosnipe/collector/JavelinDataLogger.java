@@ -95,8 +95,7 @@ public class JavelinDataLogger implements Runnable, LogMessageCodes
     private static final String JVN_LOG_ENCODING = "UTF-8";
 
     private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(JavelinDataLogger.class,
-                                                                            ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                  ENdoSnipeLogger.getLogger(JavelinDataLogger.class);
 
     private static final int TREE_TELEGRAM_DTO_COUNT = 3;
 

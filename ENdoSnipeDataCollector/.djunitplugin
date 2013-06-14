@@ -1,5 +1,5 @@
 #djUnit Plugin Settings
-#Mon Nov 08 21:36:57 JST 2010
+#Fri Jun 14 14:26:20 JST 2013
 CoverageIncludedPatterns=jp\\.co\\.acroquest\\.endosnipe\\.collector\\..+;
 VirtualMockIgnoreLibrary=false
 CoverageExcludedPatterns=.*Test$;.*Test\\$.*$;

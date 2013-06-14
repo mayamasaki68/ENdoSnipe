@@ -27,6 +27,7 @@ package jp.co.acroquest.endosnipe.javelin.converter.linear.monitor;
 
 import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
@@ -34,7 +35,6 @@ import jp.co.acroquest.endosnipe.common.event.EventConstants;
 import jp.co.acroquest.endosnipe.javelin.StatsJavelinRecorder;
 import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
 import jp.co.acroquest.endosnipe.javelin.event.LinearSearchEvent;
-import jp.co.acroquest.endosnipe.javelin.util.ImproveWeakHashMap;
 import jp.co.acroquest.endosnipe.javelin.util.StatsUtil;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
 
@@ -51,11 +51,11 @@ public class LinearSearchMonitor
 
     /** 線形検索イベント検出を保存するマップ */
     private static Map<Object, AtomicInteger> searchCountMap__ =
-            new ImproveWeakHashMap<Object, AtomicInteger>();
+            new WeakHashMap<Object, AtomicInteger>();
 
     /** LinkedList#indexOf() 呼び出し回数を保存するマップ */
     private static Map<Object, AtomicInteger> indexOfMap__ =
-            new ImproveWeakHashMap<Object, AtomicInteger>();
+            new WeakHashMap<Object, AtomicInteger>();
 
     /** Javelinの設定値 */
     private static JavelinConfig config__ = new JavelinConfig();
@@ -89,7 +89,7 @@ public class LinearSearchMonitor
         lastIndexMap__ = new ThreadLocal<Map<Object, Integer>>() {
             protected synchronized Map<Object, Integer> initialValue()
             {
-                return new ImproveWeakHashMap<Object, Integer>();
+                return new WeakHashMap<Object, Integer>();
             }
         };
 

@@ -32,6 +32,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javax.management.AttributeNotFoundException;
 import javax.management.InstanceNotFoundException;
@@ -47,7 +48,6 @@ import jp.co.acroquest.endosnipe.common.entity.DisplayType;
 import jp.co.acroquest.endosnipe.common.entity.ItemType;
 import jp.co.acroquest.endosnipe.common.entity.ResourceItem;
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
-import jp.co.acroquest.endosnipe.javelin.util.TreeMap;
 
 /**
  * 指定された名前のMBeanから計測値を取得するクラスです。

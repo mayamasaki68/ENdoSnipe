@@ -26,13 +26,13 @@
 package jp.co.acroquest.endosnipe.javelin.converter.pool;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import jp.co.acroquest.endosnipe.javelin.converter.AbstractConverter;
 import jp.co.acroquest.endosnipe.javelin.converter.pool.monitor.MonitoredPool;
 import jp.co.acroquest.endosnipe.javelin.converter.pool.monitor.PoolMonitor;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 import jp.co.smg.endosnipe.javassist.CannotCompileException;
 import jp.co.smg.endosnipe.javassist.CtBehavior;
 import jp.co.smg.endosnipe.javassist.CtClass;

@@ -24,7 +24,7 @@ ENS.SignalElementView = wgp.MapElementView.extend({
 
 		// 状態画像の情報はresourceTreeから取得
 		var treeModel = resourceTreeView.collection.get(model.id);
-		var icon = "signal_-1";
+		var icon = ENS.tree.SIGNAL_ICON_STOP;
 		if(treeModel){
 			icon = treeModel.get("icon");
 		}
@@ -43,16 +43,16 @@ ENS.SignalElementView = wgp.MapElementView.extend({
 
 		var textElementProperty = {
 			pointX : elementProperty.pointX + model.get("width") / 2,
-			pointY : elementProperty.pointY + elementProperty.height + 10,
+			pointY : elementProperty.pointY + elementProperty.height + 15,
 			width : 1,
 			height : 1,
-			fontSize : 16,
+			fontSize : ENS.map.fontSize,
 			text : model.get("text"),
-			fill : "#FFFFFF"
+			fill : ENS.map.fontColor
 		};
 
 		this.text = new textArea(textElementProperty, this._paper);
-		this.text.textObject.attr("fill", "#FFFFFF");
+		this.text.textObject.attr("fill", ENS.map.fontColor);
 
 	},
 	/**
@@ -63,7 +63,7 @@ ENS.SignalElementView = wgp.MapElementView.extend({
 
 		// 状態画像の情報はresourceTreeから取得
 		var treeModel = resourceTreeView.collection.get(model.id);
-		var icon = "signal_0";
+		var icon = ENS.tree.SIGNAL_ICON_STOP;
 		if(treeModel){
 			icon = treeModel.get("icon");
 		}

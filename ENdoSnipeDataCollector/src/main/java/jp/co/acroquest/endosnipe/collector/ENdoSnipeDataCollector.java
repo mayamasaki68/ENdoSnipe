@@ -65,8 +65,7 @@ import jp.co.acroquest.endosnipe.data.entity.SignalDefinition;
 public class ENdoSnipeDataCollector implements CommunicationClientRepository, LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(ENdoSnipeDataCollector.class,
-                                      ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                  ENdoSnipeLogger.getLogger(ENdoSnipeDataCollector.class);
 
     /** JavelinDataLogger のスレッド名称 */
     private static final String LOGGER_THREAD_NAME = "JavelinDataLoggerThread";
@@ -99,7 +98,7 @@ public class ENdoSnipeDataCollector implements CommunicationClientRepository, Lo
 
     /** DB名をキーにした、クライアントに通知するためのリスナのリスト */
     private final Map<String, List<TelegramNotifyListener>> telegramNotifyListenersMap_ =
-            new HashMap<String, List<TelegramNotifyListener>>();
+                                                                                          new HashMap<String, List<TelegramNotifyListener>>();
 
     private final List<JavelinClient> clientList_ = new ArrayList<JavelinClient>();
 
@@ -137,7 +136,7 @@ public class ENdoSnipeDataCollector implements CommunicationClientRepository, Lo
             final TelegramNotifyListener notifyListener)
     {
         List<TelegramNotifyListener> telegramNotifyListeners =
-                this.telegramNotifyListenersMap_.get(dbName);
+                                                               this.telegramNotifyListenersMap_.get(dbName);
         if (telegramNotifyListeners == null)
         {
             telegramNotifyListeners = new ArrayList<TelegramNotifyListener>();
@@ -219,8 +218,8 @@ public class ENdoSnipeDataCollector implements CommunicationClientRepository, Lo
             javelinDataLogger_.setDefaultRotateConfig(defaultRotateConfig_);
         }
         javelinDataLoggerThread_ =
-                new Thread(javelinDataLogger_, LOGGER_THREAD_NAME + "_"
-                        + Integer.toHexString(System.identityHashCode(this)));
+                                   new Thread(javelinDataLogger_, LOGGER_THREAD_NAME + "_"
+                                           + Integer.toHexString(System.identityHashCode(this)));
 
         if (behaviorMode == BehaviorMode.SERVICE_MODE)
         {
@@ -251,11 +250,11 @@ public class ENdoSnipeDataCollector implements CommunicationClientRepository, Lo
     private Map<Long, SignalDefinitionDto> createSignalDefinition(final String databaseName)
     {
         Map<Long, SignalDefinitionDto> signalDefinitionMap =
-                new ConcurrentHashMap<Long, SignalDefinitionDto>();
+                                                             new ConcurrentHashMap<Long, SignalDefinitionDto>();
         try
         {
             List<SignalDefinition> signalDefinitionList =
-                    SignalDefinitionDao.selectAll(databaseName);
+                                                          SignalDefinitionDao.selectAll(databaseName);
             for (SignalDefinition signalDefinition : signalDefinitionList)
             {
                 SignalDefinitionDto signalDefinitionDto = new SignalDefinitionDto(signalDefinition);
@@ -346,8 +345,8 @@ public class ENdoSnipeDataCollector implements CommunicationClientRepository, Lo
         this.logRotator_.setConfig(this.rotateConfigList_);
 
         this.rotateThread_ =
-                new Thread(this.logRotator_, ROTATE_THREAD_NAME + "_"
-                        + Integer.toHexString(System.identityHashCode(this)));
+                             new Thread(this.logRotator_, ROTATE_THREAD_NAME + "_"
+                                     + Integer.toHexString(System.identityHashCode(this)));
         if (daemon == true)
         {
             this.rotateThread_.setDaemon(true);
@@ -449,8 +448,8 @@ public class ENdoSnipeDataCollector implements CommunicationClientRepository, Lo
             RotateConfig rotateConfig = createRotateConfig(agentSetting);
             addRotateConfig(rotateConfig);
             String clientId =
-                    connect(databaseName, agentSetting.hostName, agentSetting.port,
-                            agentSetting.acceptPort);
+                              connect(databaseName, agentSetting.hostName, agentSetting.port,
+                                      agentSetting.acceptPort);
             if (clientId == null)
             {
                 LOGGER.log(DATABASE_ALREADY_USED, databaseName, agentSetting.hostName,

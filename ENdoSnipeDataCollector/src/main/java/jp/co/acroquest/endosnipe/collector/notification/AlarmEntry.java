@@ -50,8 +50,8 @@ public class AlarmEntry
     /** 計測間隔(単位:ミリ秒) */
     private double alarmInterval_;
 
-    /** アラームのレベル */
-    private int alarmLevel_;
+    /** アラームの状態値 */
+    private int alarmState_;
 
     /** アラームを出すかどうか */
     private boolean sendAlarm_;
@@ -70,6 +70,9 @@ public class AlarmEntry
 
     /** パラメータ（追加情報） */
     private final Map<String, Object> parameters_;
+
+    /** シグナルのレベル(3 or 5) */
+    private int signalLevel_;
 
     /**
      * コンストラクタ。
@@ -152,21 +155,21 @@ public class AlarmEntry
     }
 
     /**
-     * アラームのレベルを取得する。
-     * @return アラームのレベル
+     * アラームの状態値を取得する。
+     * @return アラームの状態値
      */
-    public int getAlarmLevel()
+    public int getAlarmState()
     {
-        return this.alarmLevel_;
+        return this.alarmState_;
     }
 
     /**
-     * アラームのレベルを設定する。
-     * @param alarmLevel アラームのレベル
+     * アラームの状態値を設定する。
+     * @param alarmState アラームの状態値
      */
-    public void setAlarmLevel(final int alarmLevel)
+    public void setAlarmState(final int alarmState)
     {
-        this.alarmLevel_ = alarmLevel;
+        this.alarmState_ = alarmState;
     }
 
     /**
@@ -283,4 +286,23 @@ public class AlarmEntry
     {
         return Collections.unmodifiableMap(this.parameters_);
     }
+
+    /**
+     * シグナルのレベルを取得する。
+     * @return シグナルのレベル
+     */
+    public int getSignalLevel()
+    {
+        return signalLevel_;
+    }
+
+    /**
+     * シグナルのレベルを設定する。
+     * @param signalLevel シグナルのレベル
+     */
+    public void setSignalLevel(final int signalLevel)
+    {
+        signalLevel_ = signalLevel;
+    }
+
 }

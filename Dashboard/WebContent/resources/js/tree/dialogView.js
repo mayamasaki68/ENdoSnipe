@@ -7,7 +7,7 @@ ENS.DialogView = wgp.AbstractView.extend({
 	 *            okFunctionName : if push OK button, execute okFunction of
 	 *            okObject <br />
 	 *            cancelObject : if push Cancel button, execute target <br />
-	 *            cancelFunctionName : if push Cancel button, execute
+	 *            cancelFunctionName : if push Cancel button or close dialog, execute
 	 *            cancelFunctionName of cancelObject <br />
 	 */
 	initialize : function(option) {
@@ -21,7 +21,7 @@ ENS.DialogView = wgp.AbstractView.extend({
 		var okObj = "okObject";
 		var cName = "cancelFunctionName";
 		var cObj = "cancelObject";
-		
+
 		$("#" + option.dialogId).dialog({
 			buttons : [ {
 				text : "OK",
@@ -48,6 +48,15 @@ ENS.DialogView = wgp.AbstractView.extend({
 					ins.op_[cObj][ins.op_[cName]](event, ins.op_);
 				}
 			} ],
+			close : function(event){
+				if (!ins.op_[cObj]) {
+					return;
+				}
+				if (!ins.op_[cObj][ins.op_[cName]]) {
+					return;
+				}
+				ins.op_[cObj][ins.op_[cName]](event, ins.op_);
+			},
 			modal : true,
 			width : 350
 		});

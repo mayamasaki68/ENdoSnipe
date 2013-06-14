@@ -25,7 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.communicate.telegram;
 
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;

@@ -17,11 +17,9 @@ import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Properties;
 
-import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
-import jp.co.acroquest.endosnipe.report.controller.ReportType;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
+import jp.co.acroquest.endosnipe.report.LogIdConstants;
+import jp.co.acroquest.endosnipe.report.controller.ReportType;
 
 /**
  * Reporterコンポーネントのコンフィグファイル（reporter.properties）の
@@ -34,8 +32,7 @@ public class ReporterConfigAccessor
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER                  =
                                                                    ENdoSnipeLogger.getLogger(
-                                                                                             ReporterConfigAccessor.class,
-                                                                                             ReporterPluginProvider.INSTANCE);
+                                                                                             ReporterConfigAccessor.class);
     
     /** コンフィグファイルパス */
     private static final String          PROPERTY_RESOURCE_PATH  = "/reporter.properties";

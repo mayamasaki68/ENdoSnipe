@@ -30,10 +30,10 @@ import java.lang.reflect.Modifier;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

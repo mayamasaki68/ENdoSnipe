@@ -28,12 +28,12 @@ package jp.co.acroquest.endosnipe.javelin.bean;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.javelin.RootInvocationManager;
-import jp.co.acroquest.endosnipe.javelin.util.LinkedList;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * ComponentƒNƒ‰ƒX

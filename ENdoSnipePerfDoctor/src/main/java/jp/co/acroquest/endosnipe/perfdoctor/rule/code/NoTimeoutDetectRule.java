@@ -47,14 +47,13 @@ public class NoTimeoutDetectRule extends SingleElementRule implements JavelinCon
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(NoTimeoutDetectRule.class,
-                                                                            null);
+                                                  ENdoSnipeLogger.getLogger(NoTimeoutDetectRule.class);
 
     /**
      * {@inheritDoc}
      */
     @SuppressWarnings("deprecation")
-	@Override
+    @Override
     protected void doJudgeElement(final JavelinLogElement element)
     {
         // 識別子が"Event"でない場合は、処理しない。

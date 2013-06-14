@@ -28,6 +28,7 @@ package jp.co.acroquest.endosnipe.javelin.converter.thread.monitor;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +40,6 @@ import jp.co.acroquest.endosnipe.javelin.JavelinTransformer;
 import jp.co.acroquest.endosnipe.javelin.StatsJavelinRecorder;
 import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
 import jp.co.acroquest.endosnipe.javelin.resource.ResourceCollector;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 
 /**
  * フルGCを監視するモニタクラスです。<br />

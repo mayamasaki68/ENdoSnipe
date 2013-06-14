@@ -53,8 +53,7 @@ import jp.co.acroquest.endosnipe.perfdoctor.rule.def.RuleSetDef;
 public class XmlRuleDefAccessor implements RuleDefAccessor
 {
     private static final ENdoSnipeLogger LOGGER         =
-                                                          ENdoSnipeLogger.getLogger(RuleDefAccessor.class,
-                                                                                    null);
+                                                          ENdoSnipeLogger.getLogger(RuleDefAccessor.class);
 
     /** 文字コードUTF-8を表す文字列 */
     private static final String          ENCODING_UTF_8 = "utf-8";
@@ -93,7 +92,7 @@ public class XmlRuleDefAccessor implements RuleDefAccessor
      * @throws RuleCreateException 読み込みに失敗した場合
      */
     @SuppressWarnings("deprecation")
-	public RuleSetDef findRuleSet(final String fileName)
+    public RuleSetDef findRuleSet(final String fileName)
         throws RuleNotFoundException,
             RuleCreateException
     {
@@ -142,7 +141,7 @@ public class XmlRuleDefAccessor implements RuleDefAccessor
      * @return URL
      */
     @SuppressWarnings("deprecation")
-	protected URL createURL(final String fileName)
+    protected URL createURL(final String fileName)
     {
         File file = new File(fileName);
 
@@ -173,7 +172,7 @@ public class XmlRuleDefAccessor implements RuleDefAccessor
      * @param fileName 書き込むファイルの名前
      */
     @SuppressWarnings("deprecation")
-	public void updateRuleSet(final RuleSetDef ruleSetDef, final String fileName)
+    public void updateRuleSet(final RuleSetDef ruleSetDef, final String fileName)
     {
         File file = new File(fileName);
         FileOutputStream fileOutputStream = null;

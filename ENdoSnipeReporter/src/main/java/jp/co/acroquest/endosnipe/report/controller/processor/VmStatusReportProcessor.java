@@ -17,8 +17,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -27,9 +27,6 @@ import jp.co.acroquest.endosnipe.report.dao.VmStatusRecordAccessor;
 import jp.co.acroquest.endosnipe.report.entity.VmStatusRecord;
 import jp.co.acroquest.endosnipe.report.output.RecordReporter;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
-import jp.co.acroquest.endosnipe.report.controller.processor.VmStatusReportProcessor;
 
 /**
  * VM状態のレポートを生成するレポートプロセッサ。
@@ -40,7 +37,7 @@ public class VmStatusReportProcessor extends ReportPublishProcessorBase
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            VmStatusReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            VmStatusReportProcessor.class);
 
     /**
      * ReportProcessorを生成する。

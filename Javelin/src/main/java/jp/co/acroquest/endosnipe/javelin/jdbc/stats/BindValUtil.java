@@ -27,10 +27,10 @@ package jp.co.acroquest.endosnipe.javelin.jdbc.stats;
 
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import jp.co.acroquest.endosnipe.javelin.jdbc.common.JdbcJavelinConfig;
 import jp.co.acroquest.endosnipe.javelin.util.StatsUtil;
-import jp.co.acroquest.endosnipe.javelin.util.TreeMap;
 
 /**
  * バインド引数を操作するためのユーティリティ。

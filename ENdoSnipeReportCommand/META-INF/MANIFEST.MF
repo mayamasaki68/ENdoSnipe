@@ -1,11 +1,1 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %plugin.name
-Bundle-SymbolicName: jp.co.acroquest.endosnipe.report.ReporterMain;singleton:=true
-Bundle-Version: 5.0.3.017
-Bundle-Activator: reportpublisher.Activator
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.apache.commons.logging
-Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Version: 5.0.3.018

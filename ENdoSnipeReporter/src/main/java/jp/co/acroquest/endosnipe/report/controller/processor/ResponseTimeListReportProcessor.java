@@ -9,8 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jp.co.acroquest.endosnipe.common.Constants;
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -21,10 +22,6 @@ import jp.co.acroquest.endosnipe.report.entity.ItemData;
 import jp.co.acroquest.endosnipe.report.entity.ObjectRecord;
 import jp.co.acroquest.endosnipe.report.output.RecordReporter;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.Constants;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
-import jp.co.acroquest.endosnipe.report.controller.processor.ResponseTimeListReportProcessor;
 
 /**
  * ResponseTimeのSummaryを作成するプロセッサ
@@ -36,7 +33,7 @@ public class ResponseTimeListReportProcessor extends ReportPublishProcessorBase
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            ResponseTimeListReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            ResponseTimeListReportProcessor.class);
 
 	/**
 	 * コンストラクタ

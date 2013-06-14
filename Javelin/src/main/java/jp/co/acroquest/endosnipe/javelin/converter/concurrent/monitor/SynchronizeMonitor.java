@@ -27,11 +27,11 @@ package jp.co.acroquest.endosnipe.javelin.converter.concurrent.monitor;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.WeakHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
-import jp.co.acroquest.endosnipe.javelin.util.ImproveWeakHashMap;
 
 /**
  * ReentrantLockを用いて、対象メソッドの実行を排他するクラスです。
@@ -42,7 +42,7 @@ public class SynchronizeMonitor
 {
     /** Lockオブジェクトのマップ。 */
     private static Map<Object, Lock> lockMap__ =
-            Collections.synchronizedMap(new ImproveWeakHashMap<Object, Lock>());
+            Collections.synchronizedMap(new WeakHashMap<Object, Lock>());
 
     /**
      * インスタンス化を防止するためのコンストラクタです。

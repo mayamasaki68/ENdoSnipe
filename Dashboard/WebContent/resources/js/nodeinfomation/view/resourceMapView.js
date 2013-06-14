@@ -194,6 +194,10 @@ ENS.ResourceMapView = wgp.MapView.extend({
 			});
 		}
 
+		// 運用モードの場合はシグナル・リンクがグラフの前に来るように調整
+		if($("#mapMode").val() == ENS.map.mode.OPERATE){
+			$(this.paper.canvas).css("z-index", 1);
+		}
 	},
 	getMapData : function(mapId){
 		var setting = {
@@ -276,7 +280,8 @@ ENS.ResourceMapView = wgp.MapView.extend({
 							pointY : event.pageY - $("#" + instance.$el.attr("id")).offset()["top"],
 							width : 100,
 							height : 100,
-							fill : "#FFFFFF",
+							fontSize : ENS.map.fontSize,
+							fill : ENS.map.fontColor,
 							zIndex : 1
 						});
 						instance.collection.add(resourceModel);

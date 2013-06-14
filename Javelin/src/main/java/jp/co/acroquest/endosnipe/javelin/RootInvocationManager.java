@@ -25,7 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin;
 
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;

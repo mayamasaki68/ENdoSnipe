@@ -26,6 +26,7 @@
 package jp.co.acroquest.endosnipe.javelin.converter.leak;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,6 @@ import jp.co.acroquest.endosnipe.javelin.common.JavassistUtil;
 import jp.co.acroquest.endosnipe.javelin.conf.JavelinMessages;
 import jp.co.acroquest.endosnipe.javelin.converter.AbstractConverter;
 import jp.co.acroquest.endosnipe.javelin.converter.leak.monitor.CollectionMonitor;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 import jp.co.smg.endosnipe.javassist.CannotCompileException;
 import jp.co.smg.endosnipe.javassist.CtClass;
 import jp.co.smg.endosnipe.javassist.CtMethod;

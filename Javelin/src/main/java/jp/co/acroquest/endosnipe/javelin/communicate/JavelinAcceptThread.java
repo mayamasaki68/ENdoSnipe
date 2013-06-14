@@ -25,6 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.communicate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
@@ -35,7 +36,6 @@ import jp.co.acroquest.endosnipe.javelin.CallTreeNode;
 import jp.co.acroquest.endosnipe.javelin.JavelinTransformer;
 import jp.co.acroquest.endosnipe.javelin.StatsJavelinRecorder;
 import jp.co.acroquest.endosnipe.javelin.bean.Invocation;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  * Javelinの通信用スレッド

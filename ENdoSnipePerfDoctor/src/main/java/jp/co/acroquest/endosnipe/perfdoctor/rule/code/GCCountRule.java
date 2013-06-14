@@ -46,8 +46,7 @@ import jp.co.acroquest.endosnipe.perfdoctor.rule.SingleElementRule;
  */
 public class GCCountRule extends SingleElementRule
 {
-    private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(GCCountRule.class, null);
+    private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(GCCountRule.class);
 
     /** 警告と判断するGC実行頻度の閾値(単位:回数/秒) */
     public int                           threshold;
@@ -96,7 +95,7 @@ public class GCCountRule extends SingleElementRule
      * @return 対応する値
      */
     @SuppressWarnings("deprecation")
-	protected int getIntValue(final Map<String, String> jmxInfoMap, final String key)
+    protected int getIntValue(final Map<String, String> jmxInfoMap, final String key)
     {
         String valueStr = jmxInfoMap.get(key);
 
@@ -124,7 +123,7 @@ public class GCCountRule extends SingleElementRule
      * @return 対応する値
      */
     @SuppressWarnings("deprecation")
-	protected double getDoubleValue(final Map<String, String> jmxInfoMap, final String key)
+    protected double getDoubleValue(final Map<String, String> jmxInfoMap, final String key)
     {
         String valueStr = jmxInfoMap.get(key);
 

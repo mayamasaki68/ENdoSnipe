@@ -25,6 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.entity.ItemType;
@@ -32,7 +33,6 @@ import jp.co.acroquest.endosnipe.common.entity.ResourceItem;
 import jp.co.acroquest.endosnipe.javelin.converter.leak.monitor.ClassHistogramEntry;
 import jp.co.acroquest.endosnipe.javelin.converter.leak.monitor.ClassHistogramMonitor;
 import jp.co.acroquest.endosnipe.javelin.converter.leak.monitor.InstanceMonitor;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  * クラスヒストグラムから、オブジェクトの数を取得するクラス。

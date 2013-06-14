@@ -187,27 +187,27 @@
 
 /** signal tree settings */
 .jstree-default a .signal_-1 {
-	background-position: -36.7px -90px;
-}
-
-.jstree-default a .signal_0 {
-	background-position: -20px -90px;
-}
-
-.jstree-default a .signal_1 {
-	background-position: -3px -90px;
-}
-
-.jstree-default a .signal_2 {
-	background-position: -36.8px -73.5px;
-}
-
-.jstree-default a .signal_3 {
 	background-position: -2.8px -73px;
 }
 
+.jstree-default a .signal_0 {
+	background-position: -2.8px -73px;
+}
+
+.jstree-default a .signal_1 {
+	background-position: -36.8px -73px;
+}
+
+.jstree-default a .signal_2 {
+	background-position: -2.8px -90px;
+}
+
+.jstree-default a .signal_3 {
+	background-position: -19.8px -90px;
+}
+
 .jstree-default a .signal_4 {
-	background-position: -20px -73px;
+	background-position: -36.8px -90px;
 }
 
 .jstree-default a .report {

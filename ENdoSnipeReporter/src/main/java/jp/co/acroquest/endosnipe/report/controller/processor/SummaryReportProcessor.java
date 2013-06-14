@@ -10,17 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
-import jp.co.acroquest.endosnipe.report.controller.ProgressController;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
 import jp.co.acroquest.endosnipe.report.controller.TemplateFileManager;
 import jp.co.acroquest.endosnipe.report.controller.dispatcher.ReportPublishProcessor;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.SummaryReportProcessor;
 
 import org.bbreak.excella.reports.exporter.ExcelExporter;
 import org.bbreak.excella.reports.model.ReportBook;
@@ -38,7 +35,7 @@ public class SummaryReportProcessor implements ReportPublishProcessor
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            SummaryReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            SummaryReportProcessor.class);
 
 	/** 出力されるレポートの種類のリスト */
 	private static final ThreadLocal<ReportType[]> OUTPUT_FILE_TYPE_LIST
@@ -143,27 +140,7 @@ public class SummaryReportProcessor implements ReportPublishProcessor
 		outputDir_ = cond.getOutputFilePath();
 
 		ReportProcessReturnContainer retContainer = new ReportProcessReturnContainer();
-		ProgressController progressCtrl = cond.getProgressController();
 
-		if (progressCtrl.isCanceled())
-		{
-			throw new InterruptedException();
-		}
-		progressCtrl.nextPhase(GET_DATA_PHASE_KEY);
-		// DBからのデータの取得は行わない。
-
-		if (progressCtrl.isCanceled())
-		{
-			throw new InterruptedException();
-		}
-		progressCtrl.nextPhase(CONVERT_DATA_PHASE_KEY);
-		// 取得したデータの変換は行わない。
-
-		if (progressCtrl.isCanceled())
-		{
-			throw new InterruptedException();
-		}
-		progressCtrl.nextPhase(OUTPUT_DATA_PHASE_KEY);
 		outputReport(null, cond, retContainer);
 
 		return retContainer;

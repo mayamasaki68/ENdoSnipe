@@ -11,7 +11,6 @@
 	<classpathentry kind="lib" path="lib/javassist.jar"/>
 	<classpathentry kind="lib" path="lib/tool/djunit.jar"/>
 	<classpathentry kind="lib" path="lib/tool/classes12.jar"/>
-	<classpathentry kind="lib" path="lib/tool/hsqldb.jar"/>
 	<classpathentry kind="lib" path="lib/tool/mock_test.jar"/>
 	<classpathentry kind="lib" path="lib/tool/mock.jar"/>
 	<classpathentry kind="lib" path="lib/tool/mysql-connector-java-5.0.4-bin.jar"/>

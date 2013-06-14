@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
@@ -40,7 +41,6 @@ import jp.co.acroquest.endosnipe.javelin.CallTreeNode;
 import jp.co.acroquest.endosnipe.javelin.conf.JavelinMessages;
 import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ArrayBlockingQueue;
 
 /**
  * Javelinのログファイル名を管理する

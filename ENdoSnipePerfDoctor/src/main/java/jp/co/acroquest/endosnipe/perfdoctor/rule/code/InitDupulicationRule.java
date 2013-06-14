@@ -53,8 +53,7 @@ public class InitDupulicationRule extends SingleElementRule implements JavelinCo
 {
     /** ロガー */
     private static final ENdoSnipeLogger         LOGGER                =
-                                                                         ENdoSnipeLogger.getLogger(InitDupulicationRule.class,
-                                                                                                   null);
+                                                                         ENdoSnipeLogger.getLogger(InitDupulicationRule.class);
 
     private static final String                  ID_LEVEL_SEPARATOR    = ":";
 
@@ -92,7 +91,7 @@ public class InitDupulicationRule extends SingleElementRule implements JavelinCo
      * {@inheritDoc}
      */
     @SuppressWarnings("deprecation")
-	@Override
+    @Override
     protected void doJudgeElement(final JavelinLogElement element)
     {
         // 識別子が"Event"でない場合は、処理しない。

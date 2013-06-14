@@ -17,8 +17,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -27,9 +27,6 @@ import jp.co.acroquest.endosnipe.report.dao.SystemRecordAccessor;
 import jp.co.acroquest.endosnipe.report.entity.SystemResourceRecord;
 import jp.co.acroquest.endosnipe.report.output.ResourceReporter;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
-import jp.co.acroquest.endosnipe.report.controller.processor.SystemReportProcessor;
 
 /**
  * CPU/メモリの使用率レポートを生成するレポートプロセッサ
@@ -40,7 +37,7 @@ public class SystemReportProcessor extends ReportPublishProcessorBase
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            SystemReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            SystemReportProcessor.class);
 
     /**
      * プロセッサを生成する。

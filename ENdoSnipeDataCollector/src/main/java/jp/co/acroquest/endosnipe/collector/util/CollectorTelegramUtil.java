@@ -125,7 +125,7 @@ public class CollectorTelegramUtil
             measurementTypeItems[cnt] = itemId;
             signalLevel[cnt] = 3;
 
-            int alarmLevel = alarmEntry.getAlarmLevel();
+            int alarmLevel = alarmEntry.getAlarmState();
             alarmLevelItems[cnt] = Integer.valueOf(alarmLevel);
 
             AlarmType alarmType = alarmEntry.getAlarmType();

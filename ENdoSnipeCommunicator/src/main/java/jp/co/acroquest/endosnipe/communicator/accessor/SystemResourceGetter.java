@@ -30,7 +30,6 @@ import java.util.List;
 import java.util.TimerTask;
 
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.communicator.ENdoSnipeCommunicatorPluginProvider;
 import jp.co.acroquest.endosnipe.communicator.TelegramSender;
 import jp.co.acroquest.endosnipe.communicator.entity.Body;
 import jp.co.acroquest.endosnipe.communicator.entity.Header;
@@ -45,8 +44,7 @@ import jp.co.acroquest.endosnipe.communicator.entity.TelegramConstants;
 public class SystemResourceGetter extends TimerTask implements TelegramConstants
 {
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(SystemResourceGetter.class,
-                                      ENdoSnipeCommunicatorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(SystemResourceGetter.class);
 
     /** システムリソースを取得する要求電文 */
     private final Telegram requestResourceTelegram_;

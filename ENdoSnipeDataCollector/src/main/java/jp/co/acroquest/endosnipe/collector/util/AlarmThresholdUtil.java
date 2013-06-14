@@ -25,7 +25,6 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.collector.util;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.common.entity.MeasurementData;
 import jp.co.acroquest.endosnipe.common.entity.MeasurementDetail;
@@ -40,8 +39,7 @@ import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 public class AlarmThresholdUtil implements LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(AlarmThresholdUtil.class,
-                                                                            ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                  ENdoSnipeLogger.getLogger(AlarmThresholdUtil.class);
 
     private AlarmThresholdUtil()
     {

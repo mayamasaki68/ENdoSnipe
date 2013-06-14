@@ -38,8 +38,7 @@ public abstract class AbstractTelegramListener implements TelegramListener
 {
     /** ÉçÉKÅ[ÉNÉâÉX */
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(AbstractTelegramListener.class,
-                                      ENdoSnipeCommunicatorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(AbstractTelegramListener.class);
 
     /**
      * {@inheritDoc}

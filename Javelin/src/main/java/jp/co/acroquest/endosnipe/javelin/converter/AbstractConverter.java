@@ -26,6 +26,7 @@
 package jp.co.acroquest.endosnipe.javelin.converter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
@@ -33,7 +34,6 @@ import jp.co.acroquest.endosnipe.javelin.conf.ExcludeConversionConfig;
 import jp.co.acroquest.endosnipe.javelin.conf.IncludeConversionConfig;
 import jp.co.acroquest.endosnipe.javelin.conf.JavelinMessages;
 import jp.co.acroquest.endosnipe.javelin.converter.util.ConverterUtil;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 import jp.co.smg.endosnipe.javassist.CannotCompileException;
 import jp.co.smg.endosnipe.javassist.ClassPool;
 import jp.co.smg.endosnipe.javassist.CtBehavior;

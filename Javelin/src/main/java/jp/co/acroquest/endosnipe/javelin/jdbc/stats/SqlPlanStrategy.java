@@ -26,13 +26,13 @@
 package jp.co.acroquest.endosnipe.javelin.jdbc.stats;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
 import jp.co.acroquest.endosnipe.common.config.JavelinConfigUtil;
 import jp.co.acroquest.endosnipe.javelin.CallTreeNode;
 import jp.co.acroquest.endosnipe.javelin.RecordStrategy;
 import jp.co.acroquest.endosnipe.javelin.log.JavelinLogCallback;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * 同一SQLの実行計画出力から一定時間超えた場合に、実行計画の記録・通知を行うRecordStrategy。

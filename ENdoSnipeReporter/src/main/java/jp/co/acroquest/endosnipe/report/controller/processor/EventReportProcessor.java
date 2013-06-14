@@ -20,8 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jp.co.acroquest.endosnipe.common.Constants;
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -32,10 +33,6 @@ import jp.co.acroquest.endosnipe.report.entity.ApplicationRecord;
 import jp.co.acroquest.endosnipe.report.entity.ItemData;
 import jp.co.acroquest.endosnipe.report.output.RecordReporter;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.Constants;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.EventReportProcessor;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
 
 /**
  * Javelinのイベント数のレポートを生成するレポートプロセッサです。
@@ -46,7 +43,7 @@ public class EventReportProcessor extends ReportPublishProcessorBase
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            EventReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            EventReportProcessor.class);
 
     /**
      * ReportProcessorを生成します。<br>

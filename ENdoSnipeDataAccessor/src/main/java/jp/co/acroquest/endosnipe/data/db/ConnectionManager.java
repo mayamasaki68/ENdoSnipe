@@ -39,7 +39,6 @@ import javax.sql.DataSource;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.util.SQLUtil;
 import jp.co.acroquest.endosnipe.data.DBInitializer;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 
 import org.apache.commons.pool.ObjectPool;
@@ -55,8 +54,7 @@ public class ConnectionManager implements LogMessageCodes
 {
     /** ロガー */
     private static final ENdoSnipeLogger   LOGGER = ENdoSnipeLogger.getLogger(
-                                                ConnectionManager.class,
-                                                ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+                                                ConnectionManager.class);
 
     /** ConnectionManagerインスタンス保持用変数 */
     private static ConnectionManager       instance__;

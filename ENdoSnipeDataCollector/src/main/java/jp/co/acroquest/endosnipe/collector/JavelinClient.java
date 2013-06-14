@@ -63,9 +63,7 @@ import jp.co.acroquest.endosnipe.data.service.HostInfoManager;
  */
 public class JavelinClient implements CommunicatorListener, LogMessageCodes
 {
-    private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(JavelinClient.class,
-                                                                            ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+    private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(JavelinClient.class);
 
     private String databaseName_;
 

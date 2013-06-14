@@ -25,12 +25,12 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.event;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
-import jp.co.acroquest.endosnipe.javelin.util.HashSet;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * À‘•’†B

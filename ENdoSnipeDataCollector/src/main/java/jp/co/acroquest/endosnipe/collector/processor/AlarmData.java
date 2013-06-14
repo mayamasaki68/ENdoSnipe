@@ -204,8 +204,9 @@ public class AlarmData
                 alarmEntry = new AlarmEntry();
                 alarmEntry.setAlarmType(AlarmType.FAILURE);
                 alarmEntry.setAlarmInterval(escalationPeriod);
-                alarmEntry.setAlarmLevel(targetLevel);
+                alarmEntry.setAlarmState(targetLevel);
                 alarmEntry.setSendAlarm(true);
+                alarmEntry.setSignalLevel(signalDefinition.getLevel());
                 setAlarmLevel(targetLevel.intValue());
                 removeList.add(targetLevel);
             }
@@ -302,8 +303,9 @@ public class AlarmData
                 alarmEntry = new AlarmEntry();
                 alarmEntry.setAlarmType(AlarmType.RECOVER);
                 alarmEntry.setAlarmInterval(escalationPeriod);
-                alarmEntry.setAlarmLevel(targetLevel);
+                alarmEntry.setAlarmState(targetLevel);
                 alarmEntry.setSendAlarm(true);
+                alarmEntry.setSignalLevel(signalDefinition.getLevel());
                 setAlarmLevel(targetLevel.intValue());
                 break;
             }

@@ -16,8 +16,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
@@ -26,9 +26,6 @@ import jp.co.acroquest.endosnipe.report.dao.ResponseTimeRecordAccessor;
 import jp.co.acroquest.endosnipe.report.entity.ResponseTimeRecord;
 import jp.co.acroquest.endosnipe.report.output.ResponseTimeReporter;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
-import jp.co.acroquest.endosnipe.report.controller.processor.ResponseTimeReportProcessor;
 
 /**
  * レスポンスタイムレポートを出力するためのプロセッサ
@@ -40,7 +37,7 @@ public class ResponseTimeReportProcessor extends ReportPublishProcessorBase
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            ResponseTimeReportProcessor.class, ReporterPluginProvider.INSTANCE);
+            ResponseTimeReportProcessor.class);
 
     /**
      * コンストラクタ

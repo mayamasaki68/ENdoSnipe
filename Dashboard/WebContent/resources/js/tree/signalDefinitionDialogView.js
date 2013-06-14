@@ -145,6 +145,15 @@ ENS.SignalDefinitionDialogView = ENS.DialogView
 															(event, ins.op_);
 												}
 											} ],
+									close : function(event){
+										if (!ins.op_[cObj]) {
+											return;
+										}
+										if (!ins.op_[cObj][ins.op_[cName]]) {
+											return;
+										}
+										ins.op_[cObj][ins.op_[cName]](event, ins.op_);
+									},
 									modal : true,
 									width : 350
 								});

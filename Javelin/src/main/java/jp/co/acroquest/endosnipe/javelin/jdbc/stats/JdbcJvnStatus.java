@@ -28,12 +28,12 @@ package jp.co.acroquest.endosnipe.javelin.jdbc.stats;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import jp.co.acroquest.endosnipe.javelin.CallTreeRecorder;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
-import jp.co.acroquest.endosnipe.javelin.util.HashSet;
 
 /**
  * JDBCJavelinがスレッド毎に持つ状態値です。

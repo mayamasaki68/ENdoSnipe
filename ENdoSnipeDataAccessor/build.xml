@@ -20,12 +20,6 @@
 
     <!-- 本体コンパイル用のクラスパス -->
     <path id="classpath">
-        <fileset dir="${eclipsePlugin.dir}/plugins">
-            <include name="org.eclipse*.jar" />
-        </fileset>
-        <fileset dir="${eclipse.dir}/plugins">
-            <include name="org.eclipse*.jar" />
-        </fileset>
         <fileset dir="${lib.dir}">
             <include name="**/*.jar" />
         </fileset>

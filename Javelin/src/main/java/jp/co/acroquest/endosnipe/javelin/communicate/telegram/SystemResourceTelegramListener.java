@@ -25,6 +25,8 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.communicate.telegram;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -45,8 +47,6 @@ import jp.co.acroquest.endosnipe.javelin.common.ConfigUpdater;
 import jp.co.acroquest.endosnipe.javelin.resource.MultiResourceGetter;
 import jp.co.acroquest.endosnipe.javelin.resource.ResourceCollector;
 import jp.co.acroquest.endosnipe.javelin.resource.ResourceGroupGetter;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
-import jp.co.acroquest.endosnipe.javelin.util.HashMap;
 
 /**
  * システムリソース取得。

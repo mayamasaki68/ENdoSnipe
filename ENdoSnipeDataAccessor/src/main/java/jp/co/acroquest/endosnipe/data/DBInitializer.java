@@ -57,7 +57,7 @@ public class DBInitializer
 	private static final String H2_FUNC_PATH = "/func/h2_func.sql";
 
 	private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-			DBInitializer.class, ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+			DBInitializer.class);
 
 	/** PostgreSQLデータベースのドライバクラス名称 */
 	private static final String POSTGRES_DRIVER = "org.postgresql.Driver";

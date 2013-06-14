@@ -27,7 +27,6 @@ package jp.co.acroquest.endosnipe.collector.listener;
 
 import java.io.File;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.JavelinDataQueue;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.collector.data.JavelinData;
@@ -49,25 +48,24 @@ import jp.co.acroquest.endosnipe.communicator.entity.TelegramConstants;
 public class JvnFileNotifyListener extends AbstractTelegramListener implements TelegramListener,
         LogMessageCodes
 {
-    private static final ENdoSnipeLogger LOGGER        = 
-            ENdoSnipeLogger.getLogger(JvnFileNotifyListener.class,
-                                      ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+    private static final ENdoSnipeLogger LOGGER =
+                                                  ENdoSnipeLogger.getLogger(JvnFileNotifyListener.class);
 
-    private final String                 tempDir_;
+    private final String tempDir_;
 
-    private final JavelinDataQueue       queue_;
+    private final JavelinDataQueue queue_;
 
-    private String                       databaseName_ = "";
+    private String databaseName_ = "";
 
-    private String                       hostName_     = null;
-    
-    private String                       agentName_    = null;
+    private String hostName_ = null;
 
-	private String                       ipAddress_    = "";
+    private String agentName_ = null;
 
-    private int                          port_         = -1;
+    private String ipAddress_ = "";
 
-    private String                       clientId_     = null;
+    private int port_ = -1;
+
+    private String clientId_ = null;
 
     /**
      * {@link JvnFileNotifyListener} を構築します。<br />
@@ -174,15 +172,16 @@ public class JvnFileNotifyListener extends AbstractTelegramListener implements T
     {
         this.hostName_ = hostName;
     }
-    
 
-    public String getAgentName() {
-		return agentName_;
-	}
+    public String getAgentName()
+    {
+        return agentName_;
+    }
 
-	public void setAgentName(String agentName) {
-		this.agentName_ = agentName;
-	}
+    public void setAgentName(final String agentName)
+    {
+        this.agentName_ = agentName;
+    }
 
     /**
      * {@link JavelinData} 用の接続先 IP アドレスを設定します。<br />

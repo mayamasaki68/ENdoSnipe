@@ -29,14 +29,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 
+import jp.co.acroquest.endosnipe.javelin.common.JavassistUtil;
 import jp.co.smg.endosnipe.javassist.ClassPool;
 import jp.co.smg.endosnipe.javassist.CtClass;
-import jp.co.acroquest.endosnipe.javelin.common.JavassistUtil;
 
 /**
  * Javelinのコード埋め込み設定。

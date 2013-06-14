@@ -37,7 +37,6 @@ import java.util.Map;
 
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.util.AssertionUtil;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 
 /**
@@ -48,8 +47,7 @@ import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 public class ConnectionWrapper implements Connection, LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(ConnectionWrapper.class,
-                                      ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(ConnectionWrapper.class);
 
     private final Connection wrappedConnection_;
 

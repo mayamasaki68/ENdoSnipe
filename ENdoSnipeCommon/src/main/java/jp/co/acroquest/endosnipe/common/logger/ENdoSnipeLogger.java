@@ -29,8 +29,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.co.acroquest.endosnipe.common.util.EclipseUtil;
-
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -197,19 +195,6 @@ public abstract class ENdoSnipeLogger
     protected static synchronized void initialize()
     {
         initialized__ = true;
-
-        // Eclipse 環境かどうかをチェックする
-        if (EclipseUtil.isEclipseAvailable() == true)
-        {
-            // Eclipse 環境である
-            isEclipseAvailable__ = true;
-            EclipseENdoSnipeLogger.initialize();
-        }
-        else
-        {
-            // Eclipse 環境ではない場合
-            isEclipseAvailable__ = false;
-        }
     }
 
     /**
@@ -230,11 +215,6 @@ public abstract class ENdoSnipeLogger
         {
             // SystemLogger を利用する場合
             return new SystemENdoSnipeLogger();
-        }
-        else if (isEclipseAvailable__)
-        {
-            // Eclipse 環境の場合
-            return new EclipseENdoSnipeLogger(provider);
         }
         else
         {

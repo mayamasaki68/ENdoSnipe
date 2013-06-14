@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.net.URL;
 
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
-import jp.co.acroquest.endosnipe.report.controller.ReportType;
-import jp.co.acroquest.endosnipe.report.controller.TemplateFileManager;
 
 /**
  * レポートの「種類」に対応したレポートテンプレートを管理する。

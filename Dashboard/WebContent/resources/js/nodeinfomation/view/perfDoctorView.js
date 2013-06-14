@@ -29,6 +29,14 @@ ENS.perfDoctorView = wgp.AbstractView.extend({
 
 		this.id = argument.id;
 
+		
+		this.dualSliderView.setScaleMovedEvent(function(from, to) {
+			var appView = new ENS.AppView();
+			var startTime = new Date(new Date().getTime() - from);
+			var endTime = new Date(new Date().getTime() - to);
+			appView.getTermPerfDoctorData([ treeSettings.treeId ], startTime,
+					endTime, 100);
+		});
 	},
 	render : function() {
 		$("#" + this.id).append('<div id="journalDiv"></div>');
@@ -46,10 +54,13 @@ ENS.perfDoctorView = wgp.AbstractView.extend({
 			colNames : this.tableColNames,
 			caption : "Diagnosis of " + this.treeSettings.id,
 			pager : "journalPager",
+			rowNum : 100,
 			rowList : [ 100, 1000, 10000 ],
 			pgbuttons : false,
 			pginput : false,
-			height : height
+			height : height,
+			sortname : "date", 
+			sortorder : "desc"
 		});
 		$("#journalTable").filterToolbar({
 			defaultSearch : 'cn'
@@ -105,7 +116,6 @@ ENS.perfDoctorView = wgp.AbstractView.extend({
 			width : 130
 		}, {
 			name : "detail",
-//			width : 140,
 			width : 80,
 			formatter : ENS.Utility.makeAnchor,
 			editoptions : {
@@ -125,41 +135,13 @@ ENS.perfDoctorView = wgp.AbstractView.extend({
 		var val = rowObject.value;
 		var rowId = options.rowId;
 		var onclick = selectValueList.onclick;
-		// return '<a href="./JvnDownloadServlet?agent_id=' +
-		// "agent_000"/*getAgentId()*/
-		// + '&log_file_name=' + "test"/*alarm_data.file_name*/ + '"
-		// target="_blank">DL</a>';
-//		return '<a href="javascript:void(0)" onclick="'
-//				+ selectValueList.onclick + ';">' + 'DL' + '</a>';
 		return '<a href="javascript:void(0)" onclick="'
 		+ selectValueList.onclick + ';">' + 'DL' + '</a>';
-	}// ,
-	// download : function() {
-	// var event = {
-	// "agent_id" : 42,
-	// "log_file_name" : "logFileName"
-	// };
-	// jQuery.post('/DashBoard/JvnDownloadServlet',event,this.callbackDownload);
-	// },
-	// callbackDownload : function() {
-	//		
-	// }
+	}
 });
-
-//function download() {
-//	var event = {
-//		"agent_id" : "1"/*getAgentId()*/,
-//		"log_file_name" : "javelin_2013_05_09_164114_175_00000.jvn"
-//	};
-//	jQuery.post('/Dashboard/JvnDownloadServlet', event, callbackDownload);
-//}
 ENS.perfDoctor.download = function(id) {
 	var rowData = $("#journalTable").getRowData(id);
 	var fileName = rowData.logFileName;
 	$("input#fileName").val(fileName);
 	$('#jvnLogBtn').click();
-}
-
-function callbackDownload(responce) {
-	alert("download!");
 }

@@ -37,7 +37,6 @@ import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
 import jp.co.acroquest.endosnipe.communicator.CommunicationServer;
 import jp.co.acroquest.endosnipe.communicator.CommunicatorListener;
-import jp.co.acroquest.endosnipe.communicator.ENdoSnipeCommunicatorPluginProvider;
 import jp.co.acroquest.endosnipe.communicator.TelegramListener;
 import jp.co.acroquest.endosnipe.communicator.TelegramUtil;
 import jp.co.acroquest.endosnipe.communicator.entity.Telegram;
@@ -53,8 +52,7 @@ public class CommunicationServerImpl implements Runnable, CommunicationServer, T
 {
     /** ÉçÉKÅ[ÉNÉâÉX */
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(CommunicationServerImpl.class,
-                                      ENdoSnipeCommunicatorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(CommunicationServerImpl.class);
 
 
     private static final int MAX_SOCKET = 1000;

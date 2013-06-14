@@ -26,6 +26,7 @@
 package jp.co.acroquest.endosnipe.javelin.log;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,7 +44,6 @@ import jp.co.acroquest.endosnipe.javelin.converter.hadoop.HadoopTaskStatus;
 import jp.co.acroquest.endosnipe.javelin.converter.hadoop.HadoopTaskStatus.State;
 import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
 import jp.co.acroquest.endosnipe.javelin.helper.VMStatusHelper;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 import jp.co.acroquest.endosnipe.javelin.util.StatsUtil;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
 

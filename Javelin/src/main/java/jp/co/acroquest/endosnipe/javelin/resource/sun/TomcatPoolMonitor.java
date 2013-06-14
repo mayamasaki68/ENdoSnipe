@@ -25,6 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.resource.sun;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +38,6 @@ import javax.management.ObjectName;
 
 import jp.co.acroquest.endosnipe.common.entity.ResourceItem;
 import jp.co.acroquest.endosnipe.common.logger.SystemLogger;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  * Tomcatのワーカスレッドの最大数と稼動数を返すクラス

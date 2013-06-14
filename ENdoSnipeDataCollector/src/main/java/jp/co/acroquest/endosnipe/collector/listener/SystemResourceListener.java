@@ -25,7 +25,6 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.collector.listener;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.JavelinDataQueue;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.collector.data.JavelinData;
@@ -54,35 +53,31 @@ public class SystemResourceListener extends AbstractTelegramListener implements 
     private static final ENdoSnipeLogger LOGGER;
     static
     {
-        LOGGER =
-                   ENdoSnipeLogger.getLogger(SystemResourceListener.class,
-                                             ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+        LOGGER = ENdoSnipeLogger.getLogger(SystemResourceListener.class);
     }
 
     /** データベース名。<br /> */
-    private String                       databaseName_;
+    private String databaseName_;
 
     /** 接続先ホスト名。<br /> */
-    private String                       hostName_;
+    private String hostName_;
 
     /** 接続先ホストの IP アドレス。<br /> */
-    private String                       ipAddress_;
+    private String ipAddress_;
 
     /** 接続先ポート番号。<br /> */
-    private int                          port_;
+    private int port_;
 
     /** 接続先のクライアントID */
-    private String                       clientId_;
+    private String clientId_;
 
     /** 受信データ格納用キュー */
-    private final JavelinDataQueue       queue_;
-    
+    private final JavelinDataQueue queue_;
+
     /** エージェント名 */
-    private String                       agentName_;
+    private String agentName_;
 
-    
-
-	/**
+    /**
      * {@link SystemResourceListener} を構築します。<br />
      * @param queue キュー
      */
@@ -99,7 +94,7 @@ public class SystemResourceListener extends AbstractTelegramListener implements 
     {
         ResourceData resourceData =
                                     ResourceNotifyAccessor.createResourceData(telegram,
-                                                                              this.databaseName_, 
+                                                                              this.databaseName_,
                                                                               agentName_);
         resourceData.hostName = this.hostName_;
         resourceData.ipAddress = this.ipAddress_;
@@ -109,7 +104,7 @@ public class SystemResourceListener extends AbstractTelegramListener implements 
         if (LOGGER.isDebugEnabled() == true)
         {
             LOGGER.log(RESOURCE_NOTIFY_RECEIVED, resourceData.hostName, resourceData.ipAddress,
-                         resourceData.portNum);
+                       resourceData.portNum);
         }
 
         // 計測値データをキューへ格納する
@@ -136,16 +131,15 @@ public class SystemResourceListener extends AbstractTelegramListener implements 
     {
         return TelegramConstants.BYTE_TELEGRAM_KIND_RESOURCENOTIFY;
     }
-    
+
     /**
      * エージェント名を取得します。
      * @return エージェント名
      */
-    public String getAgentName() 
+    public String getAgentName()
     {
-		return agentName_;
-	}
-
+        return agentName_;
+    }
 
     /**
      * データベース名をセットします。<br />
@@ -205,13 +199,13 @@ public class SystemResourceListener extends AbstractTelegramListener implements 
         javelinData.setClientId(this.clientId_);
         javelinData.setTelegramId(telegramId);
     }
-    
+
     /**
      * エージェント名を設定します。
      * @param agentName エージェント名
      */
-	public void setAgentName(String agentName) 
-	{
-		this.agentName_ = agentName;
-	}
+    public void setAgentName(final String agentName)
+    {
+        this.agentName_ = agentName;
+    }
 }

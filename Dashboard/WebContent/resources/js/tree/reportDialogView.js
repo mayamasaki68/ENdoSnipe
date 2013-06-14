@@ -58,7 +58,7 @@ ENS.ReportDialogView = ENS.DialogView
 														alert("'Report Term' is invalid format.");
 														return;
 													}
-													
+
 													// 開始時間が終了時間よりも後になっている場合は再入力を求める
 													if (termFrom >= termTo) {
 														alert("'From Time' should be earlier than the 'To Time'.");
@@ -92,6 +92,15 @@ ENS.ReportDialogView = ENS.DialogView
 															(event, ins.op_);
 												}
 											} ],
+									close : function(event){
+										if (!ins.op_[cObj]) {
+											return;
+										}
+										if (!ins.op_[cObj][ins.op_[cName]]) {
+											return;
+										}
+										ins.op_[cObj][ins.op_[cName]](event, ins.op_);
+									},
 									modal : true,
 									width : 350
 								});

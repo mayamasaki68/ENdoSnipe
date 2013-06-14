@@ -29,10 +29,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 import jp.co.acroquest.endosnipe.javelin.converter.hadoop.HadoopAction.ActionType;
 import jp.co.acroquest.endosnipe.javelin.converter.hadoop.HadoopTaskStatus.State;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  * Hadoopのオブジェクトを解析するクラス。

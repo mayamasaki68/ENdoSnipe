@@ -29,7 +29,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.data.ENdoSnipeDataAccessorPluginProvider;
 import jp.co.acroquest.endosnipe.data.LogMessageCodes;
 import jp.co.acroquest.endosnipe.data.TableNames;
 import jp.co.acroquest.endosnipe.data.dao.HostInfoDao;
@@ -46,8 +45,7 @@ import org.seasar.framework.util.StringUtil;
 public class HostInfoManager implements LogMessageCodes, TableNames
 {
     private static final ENdoSnipeLogger LOGGER =
-            ENdoSnipeLogger.getLogger(HostInfoManager.class,
-                                      ENdoSnipeDataAccessorPluginProvider.INSTANCE);
+            ENdoSnipeLogger.getLogger(HostInfoManager.class);
 
     private HostInfoManager()
     {

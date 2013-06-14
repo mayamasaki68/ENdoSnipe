@@ -25,7 +25,7 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.communicate;
 
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

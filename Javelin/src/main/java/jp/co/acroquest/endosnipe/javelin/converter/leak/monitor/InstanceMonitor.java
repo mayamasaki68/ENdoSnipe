@@ -30,14 +30,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
 import jp.co.acroquest.endosnipe.common.event.EventConstants;
 import jp.co.acroquest.endosnipe.javelin.StatsJavelinRecorder;
 import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * インスタンス数を監視する。

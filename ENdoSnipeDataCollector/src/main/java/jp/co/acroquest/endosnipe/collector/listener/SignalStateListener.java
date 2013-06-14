@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import jp.co.acroquest.endosnipe.collector.ENdoSnipeDataCollectorPluginProvider;
 import jp.co.acroquest.endosnipe.collector.JavelinDataLogger;
 import jp.co.acroquest.endosnipe.collector.LogMessageCodes;
 import jp.co.acroquest.endosnipe.collector.manager.SignalStateManager;
@@ -55,8 +54,7 @@ public class SignalStateListener extends AbstractTelegramListener implements Tel
         LogMessageCodes
 {
     private static final ENdoSnipeLogger LOGGER =
-                                                  ENdoSnipeLogger.getLogger(SignalStateListener.class,
-                                                                            ENdoSnipeDataCollectorPluginProvider.INSTANCE);
+                                                  ENdoSnipeLogger.getLogger(SignalStateListener.class);
 
     /**
      * {@inheritDoc}

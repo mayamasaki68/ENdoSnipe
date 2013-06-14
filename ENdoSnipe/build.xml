@@ -28,17 +28,7 @@
         build_ENdoSnipeCommunicator, build_ENdoSnipeDataCollector,
         build_Javelin">
         <copy todir="${release.dir}">
-            <fileset dir="${endosnipe-common.dir}/dist">
-                <include name="${plugin.jar}" />
-            </fileset>
-            <fileset dir="${endosnipe-communicator.dir}/dist">
-                <include name="${plugin.jar}" />
-            </fileset>
-            <fileset dir="${endosnipe-dataaccessor.dir}/dist">
-                <include name="${plugin.jar}" />
-            </fileset>
             <fileset dir="${endosnipe-datacollector.dir}/dist">
-                <include name="${plugin.jar}" />
                 <include name="${datacollector.zip}" />
                 <include name="${datacollector.tar.gz}" />
             </fileset>

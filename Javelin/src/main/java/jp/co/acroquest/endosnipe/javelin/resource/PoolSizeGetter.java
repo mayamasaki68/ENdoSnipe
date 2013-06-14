@@ -25,13 +25,13 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.entity.ItemType;
 import jp.co.acroquest.endosnipe.common.entity.ResourceItem;
 import jp.co.acroquest.endosnipe.javelin.converter.pool.monitor.MonitoredPool;
 import jp.co.acroquest.endosnipe.javelin.converter.pool.monitor.PoolMonitor;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  * プールのサイズを取得するクラス。

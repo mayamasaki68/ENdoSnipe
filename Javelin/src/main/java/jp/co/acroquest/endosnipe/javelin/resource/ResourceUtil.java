@@ -25,11 +25,11 @@
  ******************************************************************************/
 package jp.co.acroquest.endosnipe.javelin.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.common.entity.ResourceItem;
 import jp.co.acroquest.endosnipe.javelin.converter.leak.monitor.CollectionMonitorEntry;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
 
 /**
  * resourceパッケージで利用するユーティリティ。

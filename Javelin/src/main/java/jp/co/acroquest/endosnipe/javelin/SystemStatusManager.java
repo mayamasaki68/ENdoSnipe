@@ -26,7 +26,7 @@
 package jp.co.acroquest.endosnipe.javelin;
 
 import java.util.Map;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * システムの状態を管理するクラスです。<br />

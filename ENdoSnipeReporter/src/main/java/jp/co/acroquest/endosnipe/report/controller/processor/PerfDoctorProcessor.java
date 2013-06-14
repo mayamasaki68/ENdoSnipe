@@ -9,15 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
-import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
-import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
-import jp.co.acroquest.endosnipe.report.controller.ReportType;
-import jp.co.acroquest.endosnipe.report.controller.TemplateFileManager;
-import jp.co.acroquest.endosnipe.report.entity.PerfDoctorRecord;
-import jp.co.acroquest.endosnipe.report.output.RecordReporter;
-import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
 import jp.co.acroquest.endosnipe.common.parser.JavelinLogInputStreamAccessor;
 import jp.co.acroquest.endosnipe.data.dao.JavelinLogDao;
@@ -31,8 +22,14 @@ import jp.co.acroquest.endosnipe.perfdoctor.classfier.PerformanceDoctorFilter;
 import jp.co.acroquest.endosnipe.perfdoctor.classfier.UnifiedFilter;
 import jp.co.acroquest.endosnipe.perfdoctor.exception.RuleCreateException;
 import jp.co.acroquest.endosnipe.perfdoctor.exception.RuleNotFoundException;
-import jp.co.acroquest.endosnipe.report.controller.processor.PerfDoctorProcessor;
-import jp.co.acroquest.endosnipe.report.controller.processor.ReportPublishProcessorBase;
+import jp.co.acroquest.endosnipe.report.LogIdConstants;
+import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
+import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
+import jp.co.acroquest.endosnipe.report.controller.ReportType;
+import jp.co.acroquest.endosnipe.report.controller.TemplateFileManager;
+import jp.co.acroquest.endosnipe.report.entity.PerfDoctorRecord;
+import jp.co.acroquest.endosnipe.report.output.RecordReporter;
+import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
 
 /**
  * PerformanceDoctorの診断結果のレポートを生成する、プロセッサです。
@@ -43,7 +40,7 @@ public class PerfDoctorProcessor extends ReportPublishProcessorBase
 {
     /** ロガー */
     private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-            PerfDoctorProcessor.class, ReporterPluginProvider.INSTANCE);
+            PerfDoctorProcessor.class);
 
     /** レポートに出力される結果の数の最大値 */
     private static final int MAX_RECORD = 65534;

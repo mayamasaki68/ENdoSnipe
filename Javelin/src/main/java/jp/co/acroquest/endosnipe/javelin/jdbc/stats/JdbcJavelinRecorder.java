@@ -30,6 +30,8 @@ import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -58,8 +60,6 @@ import jp.co.acroquest.endosnipe.javelin.jdbc.stats.oracle.OracleProcessor;
 import jp.co.acroquest.endosnipe.javelin.jdbc.stats.oracle.OracleSessionStopCallback;
 import jp.co.acroquest.endosnipe.javelin.jdbc.stats.postgres.PostgresProcessor;
 import jp.co.acroquest.endosnipe.javelin.jdbc.stats.sqlserver.SQLServerProcessor;
-import jp.co.acroquest.endosnipe.javelin.util.ArrayList;
-import jp.co.acroquest.endosnipe.javelin.util.LinkedList;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
 
 /**

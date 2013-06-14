@@ -17,6 +17,7 @@
     <property name="endosnipe-dataaccessor.dir" value="../ENdoSnipeDataAccessor" />
     <property name="endosnipe-datacollector.dir" value="../ENdoSnipeDataCollector" />
     <property name="endosnipe-reporter.dir" value="../ENdoSnipeReporter" />
+    <property name="endosnipe-report-command.dir" value="../ENdoSnipeReportCommand" />
 
     <!-- 各プロジェクトの jar ファイルパス -->
     <property name="endosnipe-arrowvision.jar" value="${endosnipe-arrowvision.dir}/dist/arrowvision.jar" />
@@ -28,6 +29,7 @@
     <property name="endosnipe-dataaccessor.jar" value="${endosnipe-dataaccessor.dir}/dist/endosnipe-dataaccessor-${version}.jar" />
     <property name="endosnipe-datacollector.jar" value="${endosnipe-datacollector.dir}/dist/endosnipe-datacollector-${version}.jar" />
     <property name="endosnipe-reporter.jar" value="${endosnipe-reporter.dir}/dist/endosnipe-reporter.jar" />
+    <property name="endosnipe-report-command.jar" value="${endosnipe-reporter.dir}/dist/endosnipe-report-command.jar" />
 
     <!-- 依存ライブラリの存在チェック -->
     <available file="${endosnipe-common.jar}" type="file" property="endosnipe-common.present" />
@@ -36,6 +38,7 @@
     <available file="${endosnipe-dataaccessor.jar}" type="file" property="endosnipe-dataaccessor.present" />
     <available file="${endosnipe-datacollector.jar}" type="file" property="endosnipe-datacollector.present" />
     <available file="${endosnipe-reporter.jar}" type="file" property="endosnipe-reporter.present" />
+    <available file="${endosnipe-report-command.jar}" type="file" property="endosnipe-report-command.present" />
 
     <!-- EndoSnipe-Common の再コンパイルが必要かチェック -->
     <target name="check-endosnipe-common-needs-compile" if="endosnipe-common.present">
@@ -79,6 +82,13 @@
         </uptodate>
     </target>
 
+    <!-- EndoSnipe-ReportCommand の再コンパイルが必要かチェック -->
+    <target name="check-endosnipe-report-command-needs-compile" if="endosnipe-report-command.present">
+        <uptodate property="endosnipe-report-command.compiled" targetfile="${endosnipe-report-command.jar}">
+            <srcfiles dir="${endosnipe-report-command.dir}/src" includes="**/*.*" />
+        </uptodate>
+    </target>
+
     <!-- 依存ライブラリのコンパイル -->
     <target name="compileENdoSnipeCommon" unless="endosnipe-common.compiled" depends="check-endosnipe-common-needs-compile">
         <echo>ENdoSnipeCommonのコンパイルを行います...</echo>
@@ -107,7 +117,12 @@
 
     <target name="compileENdoSnipeReporter" unless="endosnipe-reporter.compiled" depends="check-endosnipe-reporter-needs-compile">
         <echo>ENdoSnipeDataCollectorのコンパイルを行います...</echo>
-        <!-- <ant dir="${endosnipe-reporter.dir}" antfile="${endosnipe-reporter.dir}/build.xml" inheritall="false" /> -->
+        <ant dir="${endosnipe-reporter.dir}" antfile="${endosnipe-reporter.dir}/build.xml" inheritall="false" />
+    </target>
+
+    <target name="compileENdoSnipeReportCommand" unless="endosnipe-report-command.compiled" depends="check-endosnipe-report-command-needs-compile">
+        <echo>ENdoSnipeDataCollectorのコンパイルを行います...</echo>
+        <ant dir="${endosnipe-report-command.dir}" antfile="${endosnipe-report-command.dir}/build.xml" inheritall="false" />
     </target>
 
     <!-- log4j.properties のトレースレベルに INFO 以下が含まれていないか確認 -->

@@ -26,6 +26,7 @@
 package jp.co.acroquest.endosnipe.javelin.converter.interval.monitor;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import jp.co.acroquest.endosnipe.common.config.JavelinConfig;
 import jp.co.acroquest.endosnipe.common.event.EventConstants;
@@ -35,7 +36,6 @@ import jp.co.acroquest.endosnipe.javelin.conf.JavelinMessages;
 import jp.co.acroquest.endosnipe.javelin.event.CommonEvent;
 import jp.co.acroquest.endosnipe.javelin.event.IntervalErrorEvent;
 import jp.co.acroquest.endosnipe.javelin.util.ThreadUtil;
-import jp.co.acroquest.endosnipe.javelin.util.concurrent.ConcurrentHashMap;
 
 /**
  * メソッドの呼び出し間隔を計測し、閾値を超過すれば、アラームを発します。<br />

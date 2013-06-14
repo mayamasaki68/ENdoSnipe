@@ -16,28 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.co.acroquest.endosnipe.report.LogIdConstants;
-import jp.co.acroquest.endosnipe.report.ReporterPluginProvider;
 import jp.co.acroquest.endosnipe.report.controller.dispatcher.ReportPublishDispatcher;
 import jp.co.acroquest.endosnipe.report.controller.processor.SummaryReportProcessor;
 import jp.co.acroquest.endosnipe.report.util.ReporterConfigAccessor;
 import jp.co.acroquest.endosnipe.common.logger.ENdoSnipeLogger;
-import jp.co.acroquest.endosnipe.report.controller.ProgressController;
 import jp.co.acroquest.endosnipe.report.controller.ReportProcessReturnContainer;
 import jp.co.acroquest.endosnipe.report.controller.ReportPublishTask;
 import jp.co.acroquest.endosnipe.report.controller.ReportSearchCondition;
 import jp.co.acroquest.endosnipe.report.controller.ReportType;
-
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 
 /**
  * レポート出力処理を実行するタスクオブジェクト 進捗率の通知を伴う。
  * 
  * @author M.Yoshida
  */
-public class ReportPublishTask extends Job {
+public class ReportPublishTask  {
 	/** 検索条件 */
 	private ReportSearchCondition searchCondition_;
 
@@ -49,7 +42,7 @@ public class ReportPublishTask extends Job {
 
 	/** ロガー */
 	private static final ENdoSnipeLogger LOGGER = ENdoSnipeLogger.getLogger(
-			ReportPublishTask.class, ReporterPluginProvider.INSTANCE);
+			ReportPublishTask.class);
 
 	/**
 	 * コンストラクタ
@@ -63,7 +56,6 @@ public class ReportPublishTask extends Job {
 	 */
 	public ReportPublishTask(ReportSearchCondition cond,
 			ReportType[] publishType, Runnable callback) {
-		super("ENdoSnipeReportPublish");
 		List<ReportType> additionalTypes = new ArrayList<ReportType>();
 
 		for (ReportType type : publishType) {
@@ -77,42 +69,28 @@ public class ReportPublishTask extends Job {
 	}
 
 	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public IStatus run(IProgressMonitor monitor) {
-		return Status.OK_STATUS;
-	}
-	
-	/**
 	 * 第二引数の全ての子要素に対してレポート出力を実行する。
 	 * 
 	 * @param monitor IProgressMonitorクラスのオブジェクト
 	 * @param targetItemName レポート出力対象の親の項目名
 	 * @return 実行完了時の状態
 	 */
-	public IStatus createReport(IProgressMonitor monitor, String targetItemName) {
-		ProgressController progressCtrl = new ProgressController(monitor,
-				publishTypes_.length);
-		searchCondition_.setProgressController(progressCtrl);
+	public void createReport(String targetItemName) {
 		searchCondition_
 				.setTargetItemName(targetItemName);
 
 		ReportPublishDispatcher dispatcher = ReportPublishDispatcher
 				.getInstance();
 
-		progressCtrl.beginTask();
-
 		SummaryReportProcessor.setOutputFileTypeList(publishTypes_);
 
 		for (ReportType type : publishTypes_) {
 			ReportProcessReturnContainer retCont;
-			progressCtrl.startProcessor(type);
 			retCont = dispatcher.dispatch(type, searchCondition_);
 
 			if (retCont.getHappendedError() != null) {
 				if (retCont.getHappendedError() instanceof InterruptedException) {
-					return Status.CANCEL_STATUS;
+					return;
 				}
 
 				LOGGER.log(LogIdConstants.REPORT_PUBLISH_STOPPED_WARN,
@@ -120,17 +98,12 @@ public class ReportPublishTask extends Job {
 						ReporterConfigAccessor.getReportName(type));
 				continue;
 			}
-			if (monitor.isCanceled()) {
-				return Status.CANCEL_STATUS;
-			}
 		}
 
 		if (this.callback_ != null) {
 			this.callback_.run();
 		}
 
-		progressCtrl.endTask();
-
-		return Status.OK_STATUS;
+        return;
 	}
 }
